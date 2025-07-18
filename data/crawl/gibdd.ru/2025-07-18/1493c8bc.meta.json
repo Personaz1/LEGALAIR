@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Постановление о наложении административного штрафа",
+    "document_id": "2b720042",
+    "source": "gibdd.ru",
+    "url": "https://gibdd.ru/document/2b720042",
+    "document_type": "government_decree",
+    "publication_date": "2025-06-02",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:19:33.759456",
+    "content_hash": "1493c8bc",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://gibdd.ru/document/2b720042",
+        "path": "gibdd.ru/2025-07-18/1493c8bc.pdf",
+        "size": 1123
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "gibdd_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

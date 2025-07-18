@@ -1,0 +1,22 @@
+{
+  "crawl_summary": {
+    "timestamp": "2025-07-18T23:19:33.760368",
+    "total_spiders": 1,
+    "successful_spiders": 1,
+    "failed_spiders": 0,
+    "success_rate": 1.0,
+    "demo_mode": true
+  },
+  "spider_results": {
+    "gibdd.ru": true
+  },
+  "file_statistics": {
+    "gibdd.ru": {
+      "pdf_files": 3,
+      "meta_files": 3,
+      "total_size_mb": 0.30000000000000004
+    }
+  },
+  "total_documents": 3,
+  "total_size_mb": 0.30000000000000004
+}

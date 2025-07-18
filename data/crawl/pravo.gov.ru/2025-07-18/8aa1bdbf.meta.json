@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Распоряжение Правительства РФ от 05.05.2025 № 825-р «О налогообложении»",
+    "document_id": "14d17748",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/14d17748",
+    "document_type": "other_document",
+    "publication_date": "2025-05-05",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.387425",
+    "content_hash": "8aa1bdbf",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/14d17748",
+        "path": "pravo.gov.ru/2025-07-18/8aa1bdbf.pdf",
+        "size": 854
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

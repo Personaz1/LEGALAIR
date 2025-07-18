@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Распоряжение Правительства РФ от 22.08.2024 № 158-р «О налогообложении»",
+    "document_id": "67336b76",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/67336b76",
+    "document_type": "other_document",
+    "publication_date": "2024-08-22",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.387611",
+    "content_hash": "d9f3b84e",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/67336b76",
+        "path": "pravo.gov.ru/2025-07-18/d9f3b84e.pdf",
+        "size": 854
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

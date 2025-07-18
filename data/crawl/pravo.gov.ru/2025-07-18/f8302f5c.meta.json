@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Инструкция ЦБ РФ от 21.08.2024 № 43-И «О налогообложении»",
+    "document_id": "9d87e7ee",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/9d87e7ee",
+    "document_type": "other_document",
+    "publication_date": "2024-08-21",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.387163",
+    "content_hash": "f8302f5c",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/9d87e7ee",
+        "path": "pravo.gov.ru/2025-07-18/f8302f5c.pdf",
+        "size": 827
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

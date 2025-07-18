@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Постановление Правительства РФ от 19.12.2024 № 303 «Об утверждении финансовых операциях»",
+    "document_id": "4f3c223e",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/4f3c223e",
+    "document_type": "government_decree",
+    "publication_date": "2024-12-19",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.388444",
+    "content_hash": "2b22e037",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/4f3c223e",
+        "path": "pravo.gov.ru/2025-07-18/2b22e037.pdf",
+        "size": 887
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Распоряжение Правительства РФ от 12.01.2025 № 749-р «О дорожном движении»",
+    "document_id": "83472175",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/83472175",
+    "document_type": "other_document",
+    "publication_date": "2025-01-12",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.389028",
+    "content_hash": "eeb3e4b1",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/83472175",
+        "path": "pravo.gov.ru/2025-07-18/eeb3e4b1.pdf",
+        "size": 857
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

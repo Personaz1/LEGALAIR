@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Протокол об административном правонарушении в области дорожного движения",
+    "document_id": "124948e7",
+    "source": "gibdd.ru",
+    "url": "https://gibdd.ru/document/124948e7",
+    "document_type": "protocol",
+    "publication_date": "2025-07-14",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:19:33.759240",
+    "content_hash": "bb657efb",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://gibdd.ru/document/124948e7",
+        "path": "gibdd.ru/2025-07-18/bb657efb.pdf",
+        "size": 1164
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "gibdd_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

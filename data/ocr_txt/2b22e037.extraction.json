@@ -1,0 +1,9 @@
+{
+  "file_path": "data/crawl/pravo.gov.ru/2025-07-18/2b22e037.pdf",
+  "extraction_timestamp": "2025-07-18T23:08:30.390353",
+  "extraction_method": "mock_demo",
+  "success": true,
+  "confidence": 1.0,
+  "page_count": 1,
+  "text_length": 479
+}

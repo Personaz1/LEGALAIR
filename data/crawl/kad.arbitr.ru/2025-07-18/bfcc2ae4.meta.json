@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Решение по вексельному спору № А55-6968/2024",
+    "document_id": "e17b7add",
+    "source": "kad.arbitr.ru",
+    "url": "https://kad.arbitr.ru/document/e17b7add",
+    "document_type": "court_decision",
+    "publication_date": "2024-12-26",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:16:20.769260",
+    "content_hash": "bfcc2ae4",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://kad.arbitr.ru/document/e17b7add",
+        "path": "kad.arbitr.ru/2025-07-18/bfcc2ae4.pdf",
+        "size": 1509
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "kad_arbitr_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

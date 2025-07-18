@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Постановление суда по делу о взыскании задолженности № А987-3768/2025",
+    "document_id": "91bc26ec",
+    "source": "kad.arbitr.ru",
+    "url": "https://kad.arbitr.ru/document/91bc26ec",
+    "document_type": "government_decree",
+    "publication_date": "2025-02-22",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:16:20.769437",
+    "content_hash": "93a847bb",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://kad.arbitr.ru/document/91bc26ec",
+        "path": "kad.arbitr.ru/2025-07-18/93a847bb.pdf",
+        "size": 851
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "kad_arbitr_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

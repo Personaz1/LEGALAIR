@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Постановление Правительства РФ от 12.09.2024 № 877 «Об утверждении лицензировании»",
+    "document_id": "313983cd",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/313983cd",
+    "document_type": "government_decree",
+    "publication_date": "2024-09-12",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.388677",
+    "content_hash": "c87d6c1b",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/313983cd",
+        "path": "pravo.gov.ru/2025-07-18/c87d6c1b.pdf",
+        "size": 876
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

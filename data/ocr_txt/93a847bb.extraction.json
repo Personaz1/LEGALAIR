@@ -1,0 +1,9 @@
+{
+  "file_path": "data/crawl/kad.arbitr.ru/2025-07-18/93a847bb.pdf",
+  "extraction_timestamp": "2025-07-18T23:16:20.771549",
+  "extraction_method": "mock_demo",
+  "success": true,
+  "confidence": 1.0,
+  "page_count": 1,
+  "text_length": 460
+}

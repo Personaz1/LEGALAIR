@@ -1,0 +1,22 @@
+{
+  "crawl_summary": {
+    "timestamp": "2025-07-18T23:08:30.390933",
+    "total_spiders": 1,
+    "successful_spiders": 1,
+    "failed_spiders": 0,
+    "success_rate": 1.0,
+    "demo_mode": true
+  },
+  "spider_results": {
+    "pravo.gov.ru": true
+  },
+  "file_statistics": {
+    "pravo.gov.ru": {
+      "pdf_files": 10,
+      "meta_files": 10,
+      "total_size_mb": 1.0
+    }
+  },
+  "total_documents": 10,
+  "total_size_mb": 1.0
+}

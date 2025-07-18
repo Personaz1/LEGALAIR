@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Постановление Правительства РФ от 21.08.2024 № 961 «Об утверждении финансовых операциях»",
+    "document_id": "82ab185d",
+    "source": "pravo.gov.ru",
+    "url": "https://pravo.gov.ru/document/82ab185d",
+    "document_type": "government_decree",
+    "publication_date": "2024-08-21",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:08:30.387958",
+    "content_hash": "8a908ddb",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://pravo.gov.ru/document/82ab185d",
+        "path": "pravo.gov.ru/2025-07-18/8a908ddb.pdf",
+        "size": 887
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "pravo_gov_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

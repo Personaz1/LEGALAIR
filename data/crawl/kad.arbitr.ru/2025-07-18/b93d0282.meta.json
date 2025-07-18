@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Постановление суда по делу о взыскании задолженности № А803-5217/2025",
+    "document_id": "47c7394d",
+    "source": "kad.arbitr.ru",
+    "url": "https://kad.arbitr.ru/document/47c7394d",
+    "document_type": "government_decree",
+    "publication_date": "2025-07-09",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:16:20.769058",
+    "content_hash": "b93d0282",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://kad.arbitr.ru/document/47c7394d",
+        "path": "kad.arbitr.ru/2025-07-18/b93d0282.pdf",
+        "size": 851
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "kad_arbitr_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}

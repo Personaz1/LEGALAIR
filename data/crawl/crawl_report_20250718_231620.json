@@ -1,0 +1,22 @@
+{
+  "crawl_summary": {
+    "timestamp": "2025-07-18T23:16:20.771828",
+    "total_spiders": 1,
+    "successful_spiders": 1,
+    "failed_spiders": 0,
+    "success_rate": 1.0,
+    "demo_mode": true
+  },
+  "spider_results": {
+    "kad.arbitr.ru": true
+  },
+  "file_statistics": {
+    "kad.arbitr.ru": {
+      "pdf_files": 5,
+      "meta_files": 5,
+      "total_size_mb": 0.5
+    }
+  },
+  "total_documents": 5,
+  "total_size_mb": 0.5
+}

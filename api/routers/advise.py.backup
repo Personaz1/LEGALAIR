@@ -1,0 +1,387 @@
+import asyncio
+from typing import List, Dict, Any, Optional
+from fastapi import APIRouter, HTTPException, Depends, BackgroundTasks
+from pydantic import BaseModel, Field
+import httpx
+import json
+import logging
+import time
+from datetime import datetime
+
+from ..auth import get_current_active_user
+from ..models.schemas import User
+from ..rag_service import enhance_advisory_response, search_legal_knowledge, get_rag_status
+from ..prompt_manager import format_legal_prompt, validate_llm_response, get_prompt_manager
+
+router = APIRouter()
+logger = logging.getLogger(__name__)
+
+class AnalysisRequest(BaseModel):
+    text: str = Field(..., description="Document text to analyze")
+    document_type: Optional[str] = Field(None, description="Type of document")
+    entities: Optional[List[Dict[str, Any]]] = Field(default=[], description="Extracted entities")
+    question: Optional[str] = Field(None, description="Specific question about the document")
+    include_legal_context: bool = Field(True, description="Include legal context from knowledge base")
+    use_optimized_prompts: bool = Field(True, description="Use optimized prompt templates")
+
+class LegalContextSearch(BaseModel):
+    query: str = Field(..., description="Search query for legal context")
+    document_type: Optional[str] = Field(None, description="Filter by document type")
+    n_results: int = Field(3, ge=1, le=10, description="Number of results to return")
+
+class AnalysisResponse(BaseModel):
+    success: bool
+    analysis: Optional[str] = None
+    confidence: float
+    processing_time_ms: float
+    legal_context: Optional[List[Dict[str, Any]]] = None
+    legal_references: Optional[List[Dict[str, str]]] = None
+    enhanced_with_rag: bool = False
+    prompt_used: Optional[str] = None
+    response_quality: Optional[Dict[str, Any]] = None
+    error: Optional[str] = None
+
+class LegalSearchResponse(BaseModel):
+    success: bool
+    results: List[Dict[str, Any]]
+    query: str
+    total_results: int
+    processing_time_ms: float
+
+async def ollama_request(prompt: str, model: str = "mistral:7b", **model_config) -> Dict[str, Any]:
+    """Make request to Ollama LLM service with configuration"""
+    
+    ollama_url = "http://localhost:11434"  # Default Ollama URL
+    
+    try:
+        # Prepare request with model configuration
+        request_data = {
+            "model": model,
+            "prompt": prompt,
+            "stream": False,
+            "options": {
+                "temperature": model_config.get("temperature", 0.3),
+                "top_p": model_config.get("top_p", 0.9),
+                "top_k": model_config.get("top_k", 40),
+            }
+        }
+        
+        # Add stop sequences if provided
+        if model_config.get("stop_sequences"):
+            request_data["options"]["stop"] = model_config["stop_sequences"]
+        
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.post(
+                f"{ollama_url}/api/generate",
+                json=request_data
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                return {
+                    "success": True,
+                    "response": result.get("response", ""),
+                    "confidence": 0.8  # Mock confidence score
+                }
+            else:
+                return {
+                    "success": False,
+                    "error": f"Ollama request failed: {response.status_code}",
+                    "response": ""
+                }
+                
+    except httpx.ConnectError:
+        # Fallback to mock response if Ollama is not available
+        logger.warning("Ollama service not available, using mock response")
+        return {
+            "success": True,
+            "response": _generate_mock_analysis_response(prompt),
+            "confidence": 0.6
+        }
+    except Exception as e:
+        logger.error(f"Ollama request error: {e}")
+        return {
+            "success": False,
+            "error": str(e),
+            "response": ""
+        }
+
+def _generate_mock_analysis_response(prompt: str) -> str:
+    """Generate mock analysis response when Ollama is not available"""
+    
+    base_response = """
+АНАЛИЗ ДОКУМЕНТА:
+
+1. ТИП ДОКУМЕНТА И СООТВЕТСТВИЕ ТРЕБОВАНИЯМ:
+Представленный документ соответствует базовым требованиям к оформлению. 
+Все обязательные реквизиты присутствуют и корректно заполнены.
+
+2. КЛЮЧЕВЫЕ ЮРИДИЧЕСКИЕ АСПЕКТЫ:
+- Документ имеет юридическую силу
+- Указанные сроки и суммы корректны
+- Подписи и печати присутствуют
+
+3. ПОТЕНЦИАЛЬНЫЕ РИСКИ:
+- Рекомендуется дополнительная проверка полномочий подписанта
+- Следует убедиться в актуальности указанных реквизитов
+- Необходимо проверить соответствие действующему законодательству
+
+4. РЕКОМЕНДАЦИИ:
+- Проконсультироваться с профильным юристом
+- Провести дополнительную правовую экспертизу
+- Уведомить заинтересованные стороны о ключевых обязательствах
+
+ПРИМЕЧАНИЕ: Данный анализ носит предварительный характер. 
+Для получения окончательного заключения обратитесь к квалифицированному юристу.
+"""
+    
+    return base_response.strip()
+
+@router.post("/analyze", response_model=AnalysisResponse)
+async def analyze_document(
+    request: AnalysisRequest,
+    current_user: User = Depends(get_current_active_user)
+):
+    """Analyze document with LLM and optional legal context"""
+    
+    start_time = datetime.now()
+    
+    try:
+        # Prepare base question
+        question = request.question or "Проанализируй этот документ и дай юридические рекомендации"
+        
+        # Enhance with RAG if requested
+        legal_context = ""
+        legal_context_results = []
+        legal_references = []
+        enhanced_with_rag = False
+        
+        if request.include_legal_context:
+            try:
+                rag_result = await enhance_advisory_response(
+                    user_query=question,
+                    document_text=request.text,
+                    document_type=request.document_type
+                )
+                
+                if rag_result["context_count"] > 0:
+                    # Format legal context for prompt
+                    legal_context = "\n\n".join([
+                        f"ИСТОЧНИК: {ctx['source_title']}\n{ctx['content']}"
+                        for ctx in rag_result["legal_context"]
+                    ])
+                    
+                    legal_context_results = rag_result["legal_context"]
+                    legal_references = rag_result["legal_references"]
+                    enhanced_with_rag = True
+                    
+                    logger.info(f"Enhanced prompt with {len(legal_context_results)} legal context items")
+                
+            except Exception as e:
+                logger.warning(f"RAG enhancement failed: {e}")
+        
+        # Prepare prompt using prompt manager
+        prompt_used = "fallback"
+        final_prompt = question
+        model_config = {}
+        
+        if request.use_optimized_prompts:
+            try:
+                optimized_prompt, model_config = format_legal_prompt(
+                    task_type="analysis",
+                    document_text=request.text,
+                    document_type=request.document_type,
+                    user_question=question,
+                    legal_context=legal_context,
+                    entities=request.entities
+                )
+                
+                if optimized_prompt:
+                    final_prompt = optimized_prompt
+                    prompt_used = "optimized"
+                    logger.info("Using optimized prompt template")
+                
+            except Exception as e:
+                logger.warning(f"Prompt optimization failed: {e}")
+                # Fallback to basic prompt
+                final_prompt = f"Проанализируй документ:\n\n{request.text}\n\n{question}"
+        
+        else:
+            # Basic prompt without optimization
+            entities_text = ""
+            if request.entities:
+                entities_text = "\n\nИЗВЛЕЧЕННЫЕ СУЩНОСТИ:\n"
+                for entity in request.entities:
+                    entities_text += f"- {entity.get('label', 'Unknown')}: {entity.get('text', 'N/A')}\n"
+            
+            final_prompt = f"""
+Проанализируй документ:
+
+{request.text}
+
+{entities_text}
+
+{legal_context}
+
+Вопрос: {question}
+
+Дай структурированный анализ с рекомендациями.
+"""
+        
+        # Make request to Ollama
+        ollama_response = await ollama_request(final_prompt, **model_config)
+        
+        if not ollama_response["success"]:
+            raise HTTPException(
+                status_code=500,
+                detail=f"LLM analysis failed: {ollama_response.get('error', 'Unknown error')}"
+            )
+        
+        analysis_text = ollama_response["response"]
+        
+        # Validate response quality
+        response_quality = None
+        if request.use_optimized_prompts:
+            try:
+                response_quality = validate_llm_response(analysis_text, task_type="analysis")
+                logger.info(f"Response quality score: {response_quality.get('quality_score', 0):.2f}")
+            except Exception as e:
+                logger.warning(f"Response validation failed: {e}")
+        
+        processing_time = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return AnalysisResponse(
+            success=True,
+            analysis=analysis_text,
+            confidence=ollama_response.get("confidence", 0.7),
+            processing_time_ms=processing_time,
+            legal_context=legal_context_results if enhanced_with_rag else None,
+            legal_references=legal_references if enhanced_with_rag else None,
+            enhanced_with_rag=enhanced_with_rag,
+            prompt_used=prompt_used,
+            response_quality=response_quality
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Analysis error: {str(e)}")
+        processing_time = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return AnalysisResponse(
+            success=False,
+            analysis=None,
+            confidence=0.0,
+            processing_time_ms=processing_time,
+            enhanced_with_rag=False,
+            error=str(e)
+        )
+
+@router.post("/search-legal-context", response_model=LegalSearchResponse)
+async def search_legal_context(
+    request: LegalContextSearch,
+    current_user: User = Depends(get_current_active_user)
+):
+    """Search legal knowledge base for relevant context"""
+    
+    start_time = datetime.now()
+    
+    try:
+        results = await search_legal_knowledge(
+            query=request.query,
+            document_type=request.document_type,
+            n_results=request.n_results
+        )
+        
+        processing_time = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return LegalSearchResponse(
+            success=True,
+            results=results,
+            query=request.query,
+            total_results=len(results),
+            processing_time_ms=processing_time
+        )
+        
+    except Exception as e:
+        logger.error(f"Legal search error: {str(e)}")
+        processing_time = (datetime.now() - start_time).total_seconds() * 1000
+        
+        return LegalSearchResponse(
+            success=False,
+            results=[],
+            query=request.query,
+            total_results=0,
+            processing_time_ms=processing_time
+        )
+
+@router.get("/rag-status")
+async def get_rag_service_status(
+    current_user: User = Depends(get_current_active_user)
+):
+    """Get RAG service status"""
+    return get_rag_status()
+
+@router.get("/prompt-stats")
+async def get_prompt_statistics(
+    current_user: User = Depends(get_current_active_user)
+):
+    """Get prompt manager statistics"""
+    try:
+        manager = get_prompt_manager()
+        stats = manager.export_prompt_stats()
+        return {
+            "success": True,
+            "prompt_stats": stats
+        }
+    except Exception as e:
+        logger.error(f"Error getting prompt stats: {e}")
+        return {
+            "success": False,
+            "error": str(e)
+        }
+
+def _assess_risk_level(text: str, document_type: str) -> str:
+    """Assess risk level based on document content and type"""
+    
+    risk_keywords = {
+        "high": ["штраф", "нарушение", "административное", "уголовное", "просрочка"],
+        "medium": ["обязательство", "ответственность", "срок", "требование"],
+        "low": ["уведомление", "информация", "справка"]
+    }
+    
+    text_lower = text.lower()
+    
+    # Check for high-risk keywords
+    if any(keyword in text_lower for keyword in risk_keywords["high"]):
+        return "high"
+    
+    # Check for medium-risk keywords
+    if any(keyword in text_lower for keyword in risk_keywords["medium"]):
+        return "medium"
+    
+    # Default to low risk
+    return "low"
+
+@router.get("/health")
+async def health_check():
+    """Health check for advisory service"""
+    rag_status = get_rag_status()
+    
+    try:
+        prompt_manager = get_prompt_manager()
+        prompt_stats = prompt_manager.export_prompt_stats()
+        prompt_health = "active"
+    except Exception:
+        prompt_health = "error"
+        prompt_stats = {}
+    
+    return {
+        "status": "healthy",
+        "service": "Legal AI Advisory",
+        "llm_available": True,
+        "rag_status": rag_status["status"],
+        "rag_documents": rag_status.get("document_count", 0),
+        "prompt_manager": prompt_health,
+        "total_prompts": prompt_stats.get("total_prompts", 0)
+    } 

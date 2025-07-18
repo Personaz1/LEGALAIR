@@ -1,0 +1,28 @@
+{
+  "document_info": {
+    "title": "Решение Арбитражного суда г. Санкт-Петербурга от 21.01.2025 по делу № А149-3441/2025",
+    "document_id": "8171e95c",
+    "source": "kad.arbitr.ru",
+    "url": "https://kad.arbitr.ru/document/8171e95c",
+    "document_type": "court_decision",
+    "publication_date": "2025-01-21",
+    "language": "ru"
+  },
+  "technical_info": {
+    "crawl_timestamp": "2025-07-18T23:16:20.768829",
+    "content_hash": "165e0567",
+    "processing_status": "downloaded",
+    "files": [
+      {
+        "url": "https://kad.arbitr.ru/document/8171e95c",
+        "path": "kad.arbitr.ru/2025-07-18/165e0567.pdf",
+        "size": 867
+      }
+    ]
+  },
+  "crawler_info": {
+    "spider_name": "kad_arbitr_ru",
+    "crawler_version": "1.0.0-demo",
+    "demo_mode": true
+  }
+}
