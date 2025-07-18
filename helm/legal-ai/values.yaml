@@ -1,0 +1,233 @@
+# Legal AI Platform Helm Chart Values
+# Global settings
+global:
+  namespace: legal-ai-dev
+  imageRegistry: docker.io
+  imagePullSecrets: []
+  storageClass: standard
+
+# Application settings
+app:
+  name: legal-ai
+  version: "1.0.0"
+  environment: development
+
+# API Service
+api:
+  enabled: true
+  name: legal-ai-api
+  image:
+    repository: legal-ai/api
+    tag: latest
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 2
+  
+  service:
+    type: ClusterIP
+    port: 8000
+    targetPort: 8000
+    
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "2Gi"
+      cpu: "1000m"
+      
+  env:
+    - name: DATABASE_URL
+      value: "postgresql://legal_ai:legal_ai_pass@legal-ai-postgres:5432/legal_ai"
+    - name: REDIS_URL
+      value: "redis://legal-ai-redis:6379"
+    - name: PYTHONPATH
+      value: "/app"
+    - name: LOG_LEVEL
+      value: "INFO"
+      
+  volumeMounts:
+    - name: data-volume
+      mountPath: /app/data
+    - name: config-volume
+      mountPath: /app/configs
+
+# PostgreSQL Database  
+postgres:
+  enabled: true
+  name: legal-ai-postgres
+  image:
+    repository: postgres
+    tag: "15-alpine"
+    
+  service:
+    port: 5432
+    
+  persistence:
+    enabled: true
+    size: 10Gi
+    
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+      
+  env:
+    - name: POSTGRES_DB
+      value: "legal_ai"
+    - name: POSTGRES_USER
+      value: "legal_ai"
+    - name: POSTGRES_PASSWORD
+      value: "legal_ai_pass"
+
+# Redis Cache
+redis:
+  enabled: true
+  name: legal-ai-redis
+  image:
+    repository: redis
+    tag: "7-alpine"
+    
+  service:
+    port: 6379
+    
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "50m"
+    limits:
+      memory: "512Mi"
+      cpu: "200m"
+
+# Web Frontend
+web:
+  enabled: true
+  name: legal-ai-web
+  image:
+    repository: legal-ai/web
+    tag: latest
+    pullPolicy: IfNotPresent
+    
+  replicaCount: 2
+  
+  service:
+    type: ClusterIP
+    port: 3000
+    targetPort: 3000
+    
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+
+# Ingress Configuration
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+    
+  hosts:
+    - host: legal-ai.local
+      paths:
+        - path: /api
+          pathType: Prefix
+          service: legal-ai-api
+          port: 8000
+        - path: /
+          pathType: Prefix
+          service: legal-ai-web
+          port: 3000
+
+# Monitoring
+monitoring:
+  enabled: true
+  prometheus:
+    enabled: true
+    port: 9090
+  grafana:
+    enabled: true
+    port: 3001
+    
+# MinIO Object Storage (for documents)
+minio:
+  enabled: true
+  name: legal-ai-minio
+  image:
+    repository: minio/minio
+    tag: latest
+    
+  service:
+    port: 9000
+    consolePort: 9001
+    
+  persistence:
+    enabled: true
+    size: 50Gi
+    
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "100m"
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+      
+  env:
+    - name: MINIO_ROOT_USER
+      value: "minioadmin"
+    - name: MINIO_ROOT_PASSWORD
+      value: "minioadmin123"
+
+# Persistent Volumes
+persistence:
+  data:
+    enabled: true
+    size: 20Gi
+    accessMode: ReadWriteMany
+    storageClass: standard
+    
+  config:
+    enabled: true
+    size: 1Gi
+    accessMode: ReadWriteMany
+
+# ServiceAccount
+serviceAccount:
+  create: true
+  name: legal-ai-sa
+  annotations: {}
+
+# Security Context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+# Autoscaling
+autoscaling:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+  targetMemoryUtilizationPercentage: 80
+
+# Node Selection
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# Development/Testing
+development:
+  enabled: true
+  seedData: true
+  debugMode: true 

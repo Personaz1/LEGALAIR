@@ -1,0 +1,87 @@
+{
+  "generation_date": "2025-07-18T21:10:22.617900",
+  "document_count": 5,
+  "noise_types": [
+    "blur",
+    "noise"
+  ],
+  "document_types": [
+    "bill_of_exchange",
+    "fine_notice",
+    "protocol"
+  ],
+  "generation_time_seconds": 2.260971,
+  "documents": [
+    {
+      "filename": "doc_000",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3_test/txt/doc_000.txt",
+      "pdf_file": "data/synthetic_v3_test/pdf/doc_000.pdf",
+      "clean_png": "data/synthetic_v3_test/png/doc_000.png",
+      "dirty_png": "data/synthetic_v3_test/dirty_png/doc_000.png",
+      "noise_types": [
+        "blur"
+      ],
+      "char_count": 1081,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_001",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3_test/txt/doc_001.txt",
+      "pdf_file": "data/synthetic_v3_test/pdf/doc_001.pdf",
+      "clean_png": "data/synthetic_v3_test/png/doc_001.png",
+      "dirty_png": "data/synthetic_v3_test/dirty_png/doc_001.png",
+      "noise_types": [
+        "noise"
+      ],
+      "char_count": 509,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_002",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3_test/txt/doc_002.txt",
+      "pdf_file": "data/synthetic_v3_test/pdf/doc_002.pdf",
+      "clean_png": "data/synthetic_v3_test/png/doc_002.png",
+      "dirty_png": "data/synthetic_v3_test/dirty_png/doc_002.png",
+      "noise_types": [
+        "blur"
+      ],
+      "char_count": 1018,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_003",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3_test/txt/doc_003.txt",
+      "pdf_file": "data/synthetic_v3_test/pdf/doc_003.pdf",
+      "clean_png": "data/synthetic_v3_test/png/doc_003.png",
+      "dirty_png": "data/synthetic_v3_test/dirty_png/doc_003.png",
+      "noise_types": [
+        "blur"
+      ],
+      "char_count": 1061,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_004",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3_test/txt/doc_004.txt",
+      "pdf_file": "data/synthetic_v3_test/pdf/doc_004.pdf",
+      "clean_png": "data/synthetic_v3_test/png/doc_004.png",
+      "dirty_png": "data/synthetic_v3_test/dirty_png/doc_004.png",
+      "noise_types": [
+        "noise",
+        "blur"
+      ],
+      "char_count": 1116,
+      "pages": 3,
+      "has_watermark": false
+    }
+  ]
+}

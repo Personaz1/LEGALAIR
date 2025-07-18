@@ -1,0 +1,806 @@
+{
+  "generation_date": "2025-07-18T21:40:56.016894",
+  "document_count": 50,
+  "noise_types": [
+    "blur",
+    "perspective",
+    "noise",
+    "rotation",
+    "jpeg_compression"
+  ],
+  "document_types": [
+    "bill_of_exchange",
+    "fine_notice",
+    "protocol"
+  ],
+  "generation_time_seconds": 16.420895,
+  "documents": [
+    {
+      "filename": "doc_000",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_000.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_000.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_000.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_000.png",
+      "noise_types": [
+        "blur"
+      ],
+      "char_count": 1081,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_001",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_001.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_001.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_001.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_001.png",
+      "noise_types": [
+        "rotation",
+        "noise"
+      ],
+      "char_count": 401,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_002",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_002.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_002.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_002.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_002.png",
+      "noise_types": [
+        "noise",
+        "rotation",
+        "jpeg_compression",
+        "perspective"
+      ],
+      "char_count": 503,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_003",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_003.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_003.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_003.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_003.png",
+      "noise_types": [
+        "jpeg_compression",
+        "rotation",
+        "noise"
+      ],
+      "char_count": 1107,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_004",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_004.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_004.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_004.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_004.png",
+      "noise_types": [
+        "noise",
+        "blur",
+        "perspective"
+      ],
+      "char_count": 1152,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_005",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_005.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_005.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_005.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_005.png",
+      "noise_types": [
+        "jpeg_compression",
+        "perspective",
+        "rotation",
+        "noise"
+      ],
+      "char_count": 1057,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_006",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_006.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_006.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_006.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_006.png",
+      "noise_types": [
+        "jpeg_compression",
+        "rotation",
+        "blur",
+        "perspective",
+        "noise"
+      ],
+      "char_count": 1114,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_007",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_007.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_007.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_007.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_007.png",
+      "noise_types": [
+        "rotation",
+        "jpeg_compression"
+      ],
+      "char_count": 505,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_008",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_008.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_008.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_008.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_008.png",
+      "noise_types": [
+        "blur",
+        "jpeg_compression"
+      ],
+      "char_count": 1098,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_009",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_009.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_009.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_009.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_009.png",
+      "noise_types": [
+        "blur"
+      ],
+      "char_count": 1017,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_010",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_010.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_010.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_010.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_010.png",
+      "noise_types": [
+        "jpeg_compression",
+        "blur",
+        "noise",
+        "perspective",
+        "rotation"
+      ],
+      "char_count": 1032,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_011",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_011.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_011.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_011.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_011.png",
+      "noise_types": [
+        "blur"
+      ],
+      "char_count": 1075,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_012",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_012.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_012.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_012.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_012.png",
+      "noise_types": [
+        "perspective",
+        "rotation"
+      ],
+      "char_count": 496,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_013",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_013.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_013.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_013.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_013.png",
+      "noise_types": [
+        "noise"
+      ],
+      "char_count": 502,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_014",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_014.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_014.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_014.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_014.png",
+      "noise_types": [
+        "noise"
+      ],
+      "char_count": 1031,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_015",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_015.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_015.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_015.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_015.png",
+      "noise_types": [
+        "noise",
+        "perspective",
+        "rotation"
+      ],
+      "char_count": 496,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_016",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_016.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_016.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_016.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_016.png",
+      "noise_types": [
+        "perspective",
+        "jpeg_compression",
+        "noise",
+        "rotation"
+      ],
+      "char_count": 401,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_017",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_017.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_017.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_017.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_017.png",
+      "noise_types": [
+        "perspective",
+        "rotation"
+      ],
+      "char_count": 408,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_018",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_018.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_018.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_018.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_018.png",
+      "noise_types": [
+        "rotation",
+        "perspective"
+      ],
+      "char_count": 999,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_019",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_019.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_019.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_019.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_019.png",
+      "noise_types": [
+        "blur",
+        "jpeg_compression"
+      ],
+      "char_count": 1010,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_020",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_020.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_020.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_020.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_020.png",
+      "noise_types": [
+        "jpeg_compression"
+      ],
+      "char_count": 1026,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_021",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_021.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_021.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_021.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_021.png",
+      "noise_types": [
+        "jpeg_compression"
+      ],
+      "char_count": 1019,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_022",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_022.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_022.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_022.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_022.png",
+      "noise_types": [
+        "jpeg_compression",
+        "rotation",
+        "perspective"
+      ],
+      "char_count": 1082,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_023",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_023.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_023.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_023.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_023.png",
+      "noise_types": [
+        "rotation",
+        "jpeg_compression",
+        "blur",
+        "noise"
+      ],
+      "char_count": 519,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_024",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_024.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_024.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_024.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_024.png",
+      "noise_types": [
+        "noise",
+        "blur",
+        "rotation",
+        "perspective",
+        "jpeg_compression"
+      ],
+      "char_count": 1081,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_025",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_025.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_025.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_025.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_025.png",
+      "noise_types": [
+        "rotation",
+        "perspective",
+        "noise",
+        "jpeg_compression",
+        "blur"
+      ],
+      "char_count": 414,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_026",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_026.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_026.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_026.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_026.png",
+      "noise_types": [
+        "blur",
+        "jpeg_compression"
+      ],
+      "char_count": 1024,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_027",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_027.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_027.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_027.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_027.png",
+      "noise_types": [
+        "blur",
+        "jpeg_compression",
+        "rotation"
+      ],
+      "char_count": 1144,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_028",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_028.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_028.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_028.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_028.png",
+      "noise_types": [
+        "blur",
+        "rotation",
+        "jpeg_compression",
+        "perspective",
+        "noise"
+      ],
+      "char_count": 1034,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_029",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_029.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_029.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_029.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_029.png",
+      "noise_types": [
+        "noise",
+        "blur"
+      ],
+      "char_count": 511,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_030",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_030.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_030.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_030.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_030.png",
+      "noise_types": [
+        "jpeg_compression",
+        "noise",
+        "blur"
+      ],
+      "char_count": 1028,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_031",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_031.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_031.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_031.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_031.png",
+      "noise_types": [
+        "noise"
+      ],
+      "char_count": 1008,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_032",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_032.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_032.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_032.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_032.png",
+      "noise_types": [
+        "noise",
+        "jpeg_compression",
+        "rotation",
+        "perspective"
+      ],
+      "char_count": 403,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_033",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_033.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_033.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_033.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_033.png",
+      "noise_types": [
+        "jpeg_compression"
+      ],
+      "char_count": 403,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_034",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_034.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_034.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_034.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_034.png",
+      "noise_types": [
+        "rotation",
+        "jpeg_compression"
+      ],
+      "char_count": 1031,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_035",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_035.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_035.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_035.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_035.png",
+      "noise_types": [
+        "noise",
+        "perspective",
+        "jpeg_compression",
+        "rotation"
+      ],
+      "char_count": 1122,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_036",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_036.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_036.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_036.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_036.png",
+      "noise_types": [
+        "rotation"
+      ],
+      "char_count": 1029,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_037",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_037.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_037.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_037.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_037.png",
+      "noise_types": [
+        "noise",
+        "blur",
+        "jpeg_compression",
+        "rotation"
+      ],
+      "char_count": 1157,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_038",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_038.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_038.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_038.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_038.png",
+      "noise_types": [
+        "rotation",
+        "blur"
+      ],
+      "char_count": 1092,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_039",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_039.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_039.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_039.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_039.png",
+      "noise_types": [
+        "blur",
+        "jpeg_compression",
+        "perspective",
+        "rotation",
+        "noise"
+      ],
+      "char_count": 1193,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_040",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_040.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_040.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_040.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_040.png",
+      "noise_types": [
+        "rotation"
+      ],
+      "char_count": 1160,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_041",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_041.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_041.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_041.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_041.png",
+      "noise_types": [
+        "rotation",
+        "jpeg_compression",
+        "blur"
+      ],
+      "char_count": 1005,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_042",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_042.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_042.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_042.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_042.png",
+      "noise_types": [
+        "perspective",
+        "blur",
+        "noise"
+      ],
+      "char_count": 1164,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_043",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_043.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_043.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_043.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_043.png",
+      "noise_types": [
+        "noise",
+        "blur",
+        "rotation",
+        "perspective",
+        "jpeg_compression"
+      ],
+      "char_count": 504,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_044",
+      "document_type": "bill_of_exchange",
+      "text_file": "data/synthetic_v3/txt/doc_044.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_044.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_044.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_044.png",
+      "noise_types": [
+        "jpeg_compression",
+        "rotation",
+        "noise"
+      ],
+      "char_count": 417,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_045",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_045.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_045.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_045.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_045.png",
+      "noise_types": [
+        "rotation"
+      ],
+      "char_count": 1106,
+      "pages": 3,
+      "has_watermark": true
+    },
+    {
+      "filename": "doc_046",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_046.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_046.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_046.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_046.png",
+      "noise_types": [
+        "jpeg_compression",
+        "blur",
+        "perspective",
+        "noise"
+      ],
+      "char_count": 1141,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_047",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_047.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_047.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_047.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_047.png",
+      "noise_types": [
+        "noise",
+        "jpeg_compression",
+        "blur",
+        "perspective",
+        "rotation"
+      ],
+      "char_count": 1146,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_048",
+      "document_type": "protocol",
+      "text_file": "data/synthetic_v3/txt/doc_048.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_048.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_048.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_048.png",
+      "noise_types": [
+        "jpeg_compression"
+      ],
+      "char_count": 1079,
+      "pages": 3,
+      "has_watermark": false
+    },
+    {
+      "filename": "doc_049",
+      "document_type": "fine_notice",
+      "text_file": "data/synthetic_v3/txt/doc_049.txt",
+      "pdf_file": "data/synthetic_v3/pdf/doc_049.pdf",
+      "clean_png": "data/synthetic_v3/png/doc_049.png",
+      "dirty_png": "data/synthetic_v3/dirty_png/doc_049.png",
+      "noise_types": [
+        "noise",
+        "perspective",
+        "rotation"
+      ],
+      "char_count": 1022,
+      "pages": 3,
+      "has_watermark": false
+    }
+  ]
+}

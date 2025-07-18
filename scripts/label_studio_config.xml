@@ -1,0 +1,65 @@
+<View>
+  <Text name="text" value="$text"/>
+  
+  <!-- Document Classification -->
+  <Header value="Document Classification"/>
+  <Choices name="doc_type" toName="text" required="true">
+    <Choice value="bill_of_exchange" text="Вексель (Bill of Exchange)"/>
+    <Choice value="fine_notice" text="Штраф (Fine Notice)"/>
+    <Choice value="protocol" text="Протокол (Protocol)"/>
+    <Choice value="unknown" text="Неизвестно (Unknown)"/>
+  </Choices>
+  
+  <!-- Classification Confidence -->
+  <Rating name="classification_confidence" toName="text" 
+          maxRating="5" defaultValue="3" 
+          text="Classification Confidence"/>
+  
+  <!-- Named Entity Recognition -->
+  <Header value="Named Entity Recognition"/>
+  <Labels name="entities" toName="text">
+    <!-- Person Names -->
+    <Label value="PERSON" background="#FF6B6B" 
+           text="Физическое лицо (Person)"/>
+    
+    <!-- Organizations -->
+    <Label value="ORGANIZATION" background="#4ECDC4" 
+           text="Организация (Organization)"/>
+    
+    <!-- Dates -->
+    <Label value="DATE" background="#45B7D1" 
+           text="Дата (Date)"/>
+    
+    <!-- Money Amounts -->
+    <Label value="MONEY" background="#96CEB4" 
+           text="Денежная сумма (Money)"/>
+    
+    <!-- Document Numbers -->
+    <Label value="DOCUMENT_NUMBER" background="#FFEAA7" 
+           text="Номер документа (Document Number)"/>
+    
+    <!-- Locations -->
+    <Label value="LOCATION" background="#DDA0DD" 
+           text="Местоположение (Location)"/>
+    
+    <!-- Legal Basis -->
+    <Label value="LEGAL_BASIS" background="#98D8C8" 
+           text="Правовое основание (Legal Basis)"/>
+  </Labels>
+  
+  <!-- Annotation Quality -->
+  <Header value="Annotation Quality"/>
+  <Rating name="text_quality" toName="text" 
+          maxRating="5" defaultValue="3" 
+          text="Text Quality (OCR)"/>
+  
+  <Rating name="annotation_confidence" toName="text" 
+          maxRating="5" defaultValue="3" 
+          text="Annotation Confidence"/>
+  
+  <!-- Additional Notes -->
+  <TextArea name="notes" toName="text" 
+            placeholder="Additional notes or issues..." 
+            rows="3" editable="true"/>
+            
+</View> 

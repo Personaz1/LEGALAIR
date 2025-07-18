@@ -1,0 +1,124 @@
+{
+  "proxy_pools": {
+    "cloudflare_ipv6": {
+      "description": "Cloudflare IPv6 proxy endpoints",
+      "priority": 1,
+      "timeout": 10,
+      "proxies": [
+        {
+          "url": "http://[2606:4700:4700::1111]:80",
+          "type": "http",
+          "auth": null,
+          "region": "global",
+          "notes": "Cloudflare DNS IPv6"
+        },
+        {
+          "url": "http://[2001:4860:4860::8888]:80", 
+          "type": "http",
+          "auth": null,
+          "region": "global",
+          "notes": "Google DNS IPv6"
+        }
+      ]
+    },
+    "russian_servers": {
+      "description": "Russian proxy servers (free/public)",
+      "priority": 2,
+      "timeout": 15,
+      "proxies": [
+        {
+          "url": "http://89.208.35.81:3128",
+          "type": "http",
+          "auth": null,
+          "region": "ru",
+          "notes": "Moscow region HTTP proxy"
+        },
+        {
+          "url": "http://185.189.186.19:8080",
+          "type": "http", 
+          "auth": null,
+          "region": "ru",
+          "notes": "Saint Petersburg HTTP proxy"
+        },
+        {
+          "url": "http://178.128.200.87:8080",
+          "type": "http",
+          "auth": null,
+          "region": "ru", 
+          "notes": "Russian federation proxy"
+        }
+      ]
+    },
+    "tor_exits": {
+      "description": "Tor exit nodes (use carefully)",
+      "priority": 3,
+      "timeout": 30,
+      "rate_limit": "1req/10s",
+      "proxies": [
+        {
+          "url": "socks5://127.0.0.1:9050",
+          "type": "socks5",
+          "auth": null,
+          "region": "random",
+          "notes": "Local Tor daemon (requires Tor installation)"
+        }
+      ]
+    },
+    "residential_proxies": {
+      "description": "Commercial residential proxy services",
+      "priority": 4,
+      "timeout": 20,
+      "cost_per_request": 0.001,
+      "proxies": [
+        {
+          "url": "http://rotating.proxy.service.com:8080",
+          "type": "http",
+          "auth": {
+            "username": "${PROXY_USERNAME}",
+            "password": "${PROXY_PASSWORD}"
+          },
+          "region": "ru",
+          "notes": "Commercial service - requires subscription"
+        }
+      ]
+    }
+  },
+  "rotation_strategy": {
+    "method": "round_robin",
+    "retry_failed_after": 3600,
+    "max_failures_per_proxy": 5,
+    "health_check_interval": 300
+  },
+  "usage_policies": {
+    "respect_robots_txt": true,
+    "max_requests_per_proxy_per_hour": 100,
+    "delay_between_requests": 2,
+    "user_agent_rotation": true,
+    "avoid_detection": {
+      "randomize_headers": true,
+      "vary_request_timing": true,
+      "session_rotation": 50
+    }
+  },
+  "compliance": {
+    "no_personal_data_collection": true,
+    "respect_rate_limits": true,
+    "legal_disclaimer": "Only for public domain legal documents",
+    "terms_of_service_compliance": true
+  },
+  "monitoring": {
+    "track_success_rates": true,
+    "log_response_times": true,
+    "alert_on_blocks": true,
+    "prometheus_metrics": {
+      "proxy_success_rate": "crawler_proxy_success_rate",
+      "proxy_response_time": "crawler_proxy_response_time_seconds",
+      "proxy_errors_total": "crawler_proxy_errors_total"
+    }
+  },
+  "fallback_strategy": {
+    "no_proxy_fallback": true,
+    "direct_connection_after_failures": 10,
+    "offline_mode_available": true
+  }
+} 

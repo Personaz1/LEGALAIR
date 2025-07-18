@@ -1,0 +1,41 @@
+services:
+  # PostgreSQL Database (different port)
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=legal_ai
+      - POSTGRES_USER=legal_user
+      - POSTGRES_PASSWORD=legal_pass
+    volumes:
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+    restart: unless-stopped
+
+  # MinIO Object Storage (different port)
+  minio:
+    image: minio/minio:latest
+    ports:
+      - "9001:9000"
+      - "9002:9001"
+    environment:
+      - MINIO_ROOT_USER=minioadmin
+      - MINIO_ROOT_PASSWORD=minioadmin
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+
+  # Label Studio (different port)
+  label-studio:
+    image: heartexlabs/label-studio:latest
+    ports:
+      - "8081:8080"
+    environment:
+      - LABEL_STUDIO_LOCAL_FILES_SERVING_ENABLED=true
+      - LABEL_STUDIO_LOCAL_FILES_DOCUMENT_ROOT=/label-studio/data
+    volumes:
+      - ./data/raw:/label-studio/data/raw:ro
+    restart: unless-stopped
+
+networks:
+  default:
+    name: legal-ai-test-network 

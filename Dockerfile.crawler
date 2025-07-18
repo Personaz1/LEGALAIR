@@ -1,0 +1,117 @@
+# Legal AI Document Crawler Container
+# ΔΣ::Cursor - Automated collection of legal documents
+
+FROM python:3.12-slim
+
+# Metadata
+LABEL maintainer="ΔΣ Team <team@delta-sigma.ai>"
+LABEL description="Legal AI Document Crawler"
+LABEL version="1.0.0"
+
+# Set environment variables
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app \
+    CRAWLER_HOME=/app \
+    SCRAPY_SETTINGS_MODULE=crawlers.settings
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    # Essential build tools
+    build-essential \
+    gcc \
+    g++ \
+    # XML/HTML parsing dependencies
+    libxml2-dev \
+    libxslt1-dev \
+    # SSL and crypto
+    libssl-dev \
+    libffi-dev \
+    # Image processing (for OCR)
+    libjpeg-dev \
+    libpng-dev \
+    libtiff-dev \
+    # Font support
+    fontconfig \
+    fonts-liberation \
+    # Network tools
+    curl \
+    wget \
+    # File processing
+    file \
+    unzip \
+    # Process management
+    supervisor \
+    # Cleanup
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Playwright dependencies (for kad.arbitr.ru)
+RUN apt-get update && apt-get install -y \
+    # Browser dependencies
+    libnss3 \
+    libnspr4 \
+    libdrm2 \
+    libxcomposite1 \
+    libxdamage1 \
+    libxrandr2 \
+    libgbm1 \
+    libxss1 \
+    libasound2 \
+    libxtst6 \
+    libgtk-3-0 \
+    libgdk-pixbuf2.0-0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy dependency files
+COPY requirements-crawler.txt /app/
+COPY requirements.txt /app/
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements-crawler.txt && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Install Playwright browsers
+RUN playwright install chromium firefox && \
+    playwright install-deps
+
+# Create necessary directories
+RUN mkdir -p /app/data/crawl \
+    /app/logs \
+    /app/data/ocr_txt \
+    /app/data/crawl_cache
+
+# Copy application code
+COPY crawlers/ /app/crawlers/
+COPY scripts/crawl_docs.py /app/scripts/
+COPY scripts/extract_text_from_pdf.py /app/scripts/
+COPY ml/ /app/ml/
+COPY api/ /app/api/
+
+# Make scripts executable
+RUN chmod +x /app/scripts/crawl_docs.py && \
+    chmod +x /app/scripts/extract_text_from_pdf.py
+
+# Create non-root user for security
+RUN useradd -m -u 1000 crawler && \
+    chown -R crawler:crawler /app
+
+USER crawler
+
+# Create volumes for data persistence
+VOLUME ["/app/data", "/app/logs"]
+
+# Expose ports (if needed for monitoring)
+EXPOSE 6800
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD python -c "import scrapy; print('Scrapy OK')" || exit 1
+
+# Default command
+CMD ["python", "scripts/crawl_docs.py", "--help"] 

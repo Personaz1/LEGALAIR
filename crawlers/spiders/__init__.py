@@ -1,0 +1,1 @@
+# Legal document spiders for automated collection 

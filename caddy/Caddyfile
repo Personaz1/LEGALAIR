@@ -1,0 +1,133 @@
+# Legal AI Production Caddyfile
+# Automatic HTTPS with Let's Encrypt
+
+{
+    # Global options
+    admin off
+    email {$EMAIL}
+    
+    # Security headers
+    header /* {
+        # Security headers
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        X-XSS-Protection "1; mode=block"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' wss: https:; frame-ancestors 'none'"
+        
+        # Remove server info
+        -Server
+        -X-Powered-By
+    }
+}
+
+# Main domain
+{$DOMAIN:localhost} {
+    # Rate limiting
+    rate_limit {
+        zone dynamic_rate_limit {
+            key {remote_host}
+            events 100
+            window 1m
+        }
+    }
+    
+    # Security
+    @blocked {
+        path /admin* /.env* /config* /backup*
+    }
+    respond @blocked 403
+    
+    # API routes
+    reverse_proxy /api/* api:8000 {
+        # Health check
+        health_uri /health
+        health_interval 30s
+        health_timeout 10s
+        
+        # Headers
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        header_up X-Forwarded-Host {host}
+        
+        # Response headers
+        header_down -Server
+        header_down -X-Powered-By
+    }
+    
+    # Grafana monitoring
+    reverse_proxy /grafana/* grafana:3000 {
+        # Health check
+        health_uri /api/health
+        health_interval 30s
+        
+        # Headers for Grafana
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+    }
+    
+    # Prometheus (admin only)
+    reverse_proxy /prometheus/* prometheus:9090 {
+        # Basic auth (set PROMETHEUS_USER and PROMETHEUS_PASS env vars)
+        basicauth /* {
+            {$PROMETHEUS_USER:admin} {$PROMETHEUS_PASS:$2a$10$3QQQyKrV3.6.2QQQyKrV3.}
+        }
+        
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+    }
+    
+    # Frontend (fallback)
+    reverse_proxy web:3000 {
+        # Health check
+        health_uri /api/health
+        health_interval 30s
+        
+        # Headers
+        header_up Host {upstream_hostport}
+        header_up X-Real-IP {remote_host}
+        header_up X-Forwarded-For {remote_host}
+        header_up X-Forwarded-Proto {scheme}
+        
+        # Enable WebSocket support for Next.js development
+        @websockets {
+            header Connection *Upgrade*
+            header Upgrade websocket
+        }
+        reverse_proxy @websockets web:3000
+    }
+    
+    # Error pages
+    handle_errors {
+        rewrite * /{err.status_code}.html
+        file_server {
+            root /usr/share/caddy/error_pages
+        }
+    }
+    
+    # Logging
+    log {
+        output file /var/log/caddy/access.log {
+            roll_size 100MB
+            roll_keep 5
+        }
+        format json
+        level INFO
+    }
+}
+
+# Health check endpoint for load balancers
+:8080 {
+    respond /health 200
+    respond 404
+}
+
+# Redirect HTTP to HTTPS
+http://{$DOMAIN:localhost} {
+    redir https://{host}{uri} permanent
+} 

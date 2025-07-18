@@ -1,0 +1,20 @@
+apiVersion: v2
+name: legal-ai
+description: Legal AI Platform - Document Processing and Advisory System
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - legal
+  - ai
+  - document-processing
+  - ocr
+  - rag
+home: https://github.com/org/legal-ai
+sources:
+  - https://github.com/org/legal-ai
+maintainers:
+  - name: ΔΣ Team
+    email: team@delta-sigma.ai
+annotations:
+  category: AI/ML Platform 

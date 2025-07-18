@@ -1,0 +1,174 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: legal-ai-api-gpu
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://legal_ai:legal_ai_pass@postgres:5432/legal_ai_db
+      - SECRET_KEY=${SECRET_KEY:-legal-ai-gpu-secret-key-production}
+      - OLLAMA_URL=http://ollama:11434
+      - CUDA_VISIBLE_DEVICES=all
+    volumes:
+      - ./data:/app/data
+      - ./ml/checkpoints:/app/ml/checkpoints
+      - model_cache:/app/models
+    depends_on:
+      - postgres
+      - ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - legal-ai-network
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: legal-ai-ollama
+    ports:
+      - "11434:11434"
+    environment:
+      - CUDA_VISIBLE_DEVICES=0
+      - OLLAMA_MODELS=/usr/share/ollama/.ollama/models
+    volumes:
+      - ollama_data:/usr/share/ollama/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    networks:
+      - legal-ai-network
+    command: ollama serve
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: legal-ai-postgres
+    environment:
+      - POSTGRES_DB=legal_ai_db
+      - POSTGRES_USER=legal_ai
+      - POSTGRES_PASSWORD=legal_ai_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - legal-ai-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: legal-ai-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+    networks:
+      - legal-ai-network
+    command: redis-server --appendonly yes
+
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.dev
+    container_name: legal-ai-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:8000
+      - NODE_ENV=production
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - legal-ai-network
+
+  label-studio:
+    image: heartexlabs/label-studio:latest
+    container_name: legal-ai-label-studio
+    ports:
+      - "8080:8080"
+    environment:
+      - DJANGO_DB=default
+      - POSTGRE_NAME=label_studio
+      - POSTGRE_USER=label_studio
+      - POSTGRE_PASSWORD=label_studio_pass
+      - POSTGRE_HOST=postgres
+      - POSTGRE_PORT=5432
+      - LABEL_STUDIO_DISABLE_SIGNUP_WITHOUT_LINK=true
+      - LABEL_STUDIO_USERNAME=admin
+      - LABEL_STUDIO_PASSWORD=admin123
+    volumes:
+      - label_studio_data:/label-studio/data
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - legal-ai-network
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: legal-ai-prometheus-gpu
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - legal-ai-network
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: legal-ai-grafana-gpu
+    ports:
+      - "3001:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana-datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - ./monitoring/grafana-dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+      - ./monitoring/dashboards:/var/lib/grafana/dashboards
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin123
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_INSTALL_PLUGINS=grafana-piechart-panel
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+    networks:
+      - legal-ai-network
+
+volumes:
+  postgres_data:
+  redis_data:
+  ollama_data:
+  label_studio_data:
+  prometheus_data:
+  grafana_data:
+  model_cache:
+
+networks:
+  legal-ai-network:
+    driver: bridge 

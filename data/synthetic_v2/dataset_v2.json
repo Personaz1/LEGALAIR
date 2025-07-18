@@ -1,0 +1,1032 @@
+{
+  "version": "2.0",
+  "generated_at": "2025-07-18T20:31:09.334380",
+  "total_documents": 60,
+  "document_types": {
+    "protocol": 15,
+    "bill_of_exchange": 24,
+    "fine_notice": 21
+  },
+  "documents": [
+    {
+      "id": 0,
+      "filename": "doc_000",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ПАО \"Промышленность\"",
+        "chairman": "Козлов Мария Павлович",
+        "secretary": "Соловьев Елена Максимович",
+        "participants_count": 7,
+        "doc_date": "21.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_000.txt",
+        "pdf": "pdf/doc_000.pdf",
+        "png": "png/doc_000.png"
+      }
+    },
+    {
+      "id": 1,
+      "filename": "doc_001",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 100000,
+        "debtor": "Соловьев Александр Максимович",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "03.05.2025",
+        "payment_date": "24.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_001.txt",
+        "pdf": "pdf/doc_001.pdf",
+        "png": "png/doc_001.png"
+      }
+    },
+    {
+      "id": 2,
+      "filename": "doc_002",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 25000,
+        "debtor": "Петров Максим Иванович",
+        "creditor": "ЗАО \"Нефть Газ\"",
+        "doc_date": "02.06.2025",
+        "payment_date": "26.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_002.txt",
+        "pdf": "pdf/doc_002.pdf",
+        "png": "png/doc_002.png"
+      }
+    },
+    {
+      "id": 3,
+      "filename": "doc_003",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 2000,
+        "violator": "Иванов Роман Владимирович",
+        "article": "19.5",
+        "violation_type": "обгон в неположенном месте",
+        "doc_date": "20.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_003.txt",
+        "pdf": "pdf/doc_003.pdf",
+        "png": "png/doc_003.png"
+      }
+    },
+    {
+      "id": 4,
+      "filename": "doc_004",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 1000,
+        "violator": "Воробьев Николай Олегович",
+        "article": "7.12",
+        "violation_type": "нарушение ПДД",
+        "doc_date": "10.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_004.txt",
+        "pdf": "pdf/doc_004.pdf",
+        "png": "png/doc_004.png"
+      }
+    },
+    {
+      "id": 5,
+      "filename": "doc_005",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 1000,
+        "violator": "Волков Евгений Петрович",
+        "article": "20.20",
+        "violation_type": "нарушение режима труда",
+        "doc_date": "28.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_005.txt",
+        "pdf": "pdf/doc_005.pdf",
+        "png": "png/doc_005.png"
+      }
+    },
+    {
+      "id": 6,
+      "filename": "doc_006",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 407967,
+        "debtor": "Иванов Юлия Дмитриевич",
+        "creditor": "ПАО \"Энерго Системы\"",
+        "doc_date": "14.07.2025",
+        "payment_date": "14.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_006.txt",
+        "pdf": "pdf/doc_006.pdf",
+        "png": "png/doc_006.png"
+      }
+    },
+    {
+      "id": 7,
+      "filename": "doc_007",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 5000,
+        "violator": "Виноградов Юлия Игоревич",
+        "article": "7.12",
+        "violation_type": "нарушение режима труда",
+        "doc_date": "15.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_007.txt",
+        "pdf": "pdf/doc_007.pdf",
+        "png": "png/doc_007.png"
+      }
+    },
+    {
+      "id": 8,
+      "filename": "doc_008",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 5000,
+        "debtor": "Комаров Иван Романович",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "02.06.2025",
+        "payment_date": "17.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_008.txt",
+        "pdf": "pdf/doc_008.pdf",
+        "png": "png/doc_008.png"
+      }
+    },
+    {
+      "id": 9,
+      "filename": "doc_009",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ООО \"Торговый Дом\"",
+        "chairman": "Новиков Анна Романович",
+        "secretary": "Богданов Алексей Михайлович",
+        "participants_count": 7,
+        "doc_date": "16.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_009.txt",
+        "pdf": "pdf/doc_009.pdf",
+        "png": "png/doc_009.png"
+      }
+    },
+    {
+      "id": 10,
+      "filename": "doc_010",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 179160,
+        "debtor": "Морозов Максим Игоревич",
+        "creditor": "ПАО \"Промышленность\"",
+        "doc_date": "22.04.2025",
+        "payment_date": "28.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_010.txt",
+        "pdf": "pdf/doc_010.pdf",
+        "png": "png/doc_010.png"
+      }
+    },
+    {
+      "id": 11,
+      "filename": "doc_011",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ООО \"Металл Сервис\"",
+        "chairman": "Голубев Анна Александрович",
+        "secretary": "Зайцев Елена Романович",
+        "participants_count": 6,
+        "doc_date": "26.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_011.txt",
+        "pdf": "pdf/doc_011.pdf",
+        "png": "png/doc_011.png"
+      }
+    },
+    {
+      "id": 12,
+      "filename": "doc_012",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 50000,
+        "debtor": "Волков Алексей Игоревич",
+        "creditor": "ПАО \"Промышленность\"",
+        "doc_date": "06.06.2025",
+        "payment_date": "12.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_012.txt",
+        "pdf": "pdf/doc_012.pdf",
+        "png": "png/doc_012.png"
+      }
+    },
+    {
+      "id": 13,
+      "filename": "doc_013",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 20000,
+        "debtor": "Беляев Алексей Алексеевич",
+        "creditor": "ПАО \"Энерго Системы\"",
+        "doc_date": "12.07.2025",
+        "payment_date": "31.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_013.txt",
+        "pdf": "pdf/doc_013.pdf",
+        "png": "png/doc_013.png"
+      }
+    },
+    {
+      "id": 14,
+      "filename": "doc_014",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 15000,
+        "debtor": "Тарасов Алексей Романович",
+        "creditor": "ЗАО \"Капитал Инвест\"",
+        "doc_date": "24.04.2025",
+        "payment_date": "20.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_014.txt",
+        "pdf": "pdf/doc_014.pdf",
+        "png": "png/doc_014.png"
+      }
+    },
+    {
+      "id": 15,
+      "filename": "doc_015",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 25000,
+        "violator": "Зайцев Наталья Максимович",
+        "article": "19.5",
+        "violation_type": "нарушение разметки",
+        "doc_date": "03.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_015.txt",
+        "pdf": "pdf/doc_015.pdf",
+        "png": "png/doc_015.png"
+      }
+    },
+    {
+      "id": 16,
+      "filename": "doc_016",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ПАО \"Энерго Системы\"",
+        "chairman": "Волков Наталья Павлович",
+        "secretary": "Беляев Иван Михайлович",
+        "participants_count": 4,
+        "doc_date": "12.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_016.txt",
+        "pdf": "pdf/doc_016.pdf",
+        "png": "png/doc_016.png"
+      }
+    },
+    {
+      "id": 17,
+      "filename": "doc_017",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 25000,
+        "violator": "Иванов Юлия Владимирович",
+        "article": "19.3",
+        "violation_type": "нарушение ПДД",
+        "doc_date": "06.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_017.txt",
+        "pdf": "pdf/doc_017.pdf",
+        "png": "png/doc_017.png"
+      }
+    },
+    {
+      "id": 18,
+      "filename": "doc_018",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 10000,
+        "violator": "Федоров Татьяна Владимирович",
+        "article": "6.3",
+        "violation_type": "превышение массы",
+        "doc_date": "23.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_018.txt",
+        "pdf": "pdf/doc_018.pdf",
+        "png": "png/doc_018.png"
+      }
+    },
+    {
+      "id": 19,
+      "filename": "doc_019",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ООО \"Бизнес Решения\"",
+        "chairman": "Беляев Алексей Петрович",
+        "secretary": "Михайлов Станислав Евгеньевич",
+        "participants_count": 6,
+        "doc_date": "02.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_019.txt",
+        "pdf": "pdf/doc_019.pdf",
+        "png": "png/doc_019.png"
+      }
+    },
+    {
+      "id": 20,
+      "filename": "doc_020",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ЗАО \"Финанс Групп\"",
+        "chairman": "Богданов Светлана Сергеевич",
+        "secretary": "Петров Наталья Владимирович",
+        "participants_count": 5,
+        "doc_date": "30.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_020.txt",
+        "pdf": "pdf/doc_020.pdf",
+        "png": "png/doc_020.png"
+      }
+    },
+    {
+      "id": 21,
+      "filename": "doc_021",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ЗАО \"Капитал Инвест\"",
+        "chairman": "Тарасов Наталья Романович",
+        "secretary": "Петров Евгений Андреевич",
+        "participants_count": 6,
+        "doc_date": "28.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_021.txt",
+        "pdf": "pdf/doc_021.pdf",
+        "png": "png/doc_021.png"
+      }
+    },
+    {
+      "id": 22,
+      "filename": "doc_022",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 25000,
+        "debtor": "Соловьев Евгений Дмитриевич",
+        "creditor": "ЗАО \"Финанс Групп\"",
+        "doc_date": "30.06.2025",
+        "payment_date": "15.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_022.txt",
+        "pdf": "pdf/doc_022.pdf",
+        "png": "png/doc_022.png"
+      }
+    },
+    {
+      "id": 23,
+      "filename": "doc_023",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ООО \"Торговый Дом\"",
+        "chairman": "Петров Петр Владимирович",
+        "secretary": "Соловьев Алексей Романович",
+        "participants_count": 7,
+        "doc_date": "23.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_023.txt",
+        "pdf": "pdf/doc_023.pdf",
+        "png": "png/doc_023.png"
+      }
+    },
+    {
+      "id": 24,
+      "filename": "doc_024",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 10000,
+        "violator": "Федоров Игорь Алексеевич",
+        "article": "15.25",
+        "violation_type": "несоблюдение дистанции",
+        "doc_date": "16.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_024.txt",
+        "pdf": "pdf/doc_024.pdf",
+        "png": "png/doc_024.png"
+      }
+    },
+    {
+      "id": 25,
+      "filename": "doc_025",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 271161,
+        "debtor": "Морозов Юлия Владимирович",
+        "creditor": "ЗАО \"Финанс Групп\"",
+        "doc_date": "13.07.2025",
+        "payment_date": "03.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_025.txt",
+        "pdf": "pdf/doc_025.pdf",
+        "png": "png/doc_025.png"
+      }
+    },
+    {
+      "id": 26,
+      "filename": "doc_026",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 46291,
+        "debtor": "Павлов Дмитрий Николаевич",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "25.04.2025",
+        "payment_date": "31.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_026.txt",
+        "pdf": "pdf/doc_026.pdf",
+        "png": "png/doc_026.png"
+      }
+    },
+    {
+      "id": 27,
+      "filename": "doc_027",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 30000,
+        "debtor": "Богданов Мария Романович",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "29.04.2025",
+        "payment_date": "24.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_027.txt",
+        "pdf": "pdf/doc_027.pdf",
+        "png": "png/doc_027.png"
+      }
+    },
+    {
+      "id": 28,
+      "filename": "doc_028",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 1000,
+        "violator": "Павлов Анна Николаевич",
+        "article": "12.24",
+        "violation_type": "несоблюдение дистанции",
+        "doc_date": "06.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_028.txt",
+        "pdf": "pdf/doc_028.pdf",
+        "png": "png/doc_028.png"
+      }
+    },
+    {
+      "id": 29,
+      "filename": "doc_029",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 10000,
+        "debtor": "Соловьев Мария Петрович",
+        "creditor": "ПАО \"Технологии будущего\"",
+        "doc_date": "24.06.2025",
+        "payment_date": "03.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_029.txt",
+        "pdf": "pdf/doc_029.pdf",
+        "png": "png/doc_029.png"
+      }
+    },
+    {
+      "id": 30,
+      "filename": "doc_030",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 5000,
+        "violator": "Васильев Игорь Дмитриевич",
+        "article": "6.3",
+        "violation_type": "нарушение ПДД",
+        "doc_date": "27.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_030.txt",
+        "pdf": "pdf/doc_030.pdf",
+        "png": "png/doc_030.png"
+      }
+    },
+    {
+      "id": 31,
+      "filename": "doc_031",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 10000,
+        "violator": "Козлов Роман Максимович",
+        "article": "12.16",
+        "violation_type": "несоблюдение дистанции",
+        "doc_date": "25.05.2025"
+      },
+      "files": {
+        "txt": "txt/doc_031.txt",
+        "pdf": "pdf/doc_031.pdf",
+        "png": "png/doc_031.png"
+      }
+    },
+    {
+      "id": 32,
+      "filename": "doc_032",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 20000,
+        "debtor": "Комаров Михаил Алексеевич",
+        "creditor": "ООО \"Металл Сервис\"",
+        "doc_date": "20.06.2025",
+        "payment_date": "28.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_032.txt",
+        "pdf": "pdf/doc_032.pdf",
+        "png": "png/doc_032.png"
+      }
+    },
+    {
+      "id": 33,
+      "filename": "doc_033",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 25000,
+        "violator": "Сидоров Ольга Владимирович",
+        "article": "20.25",
+        "violation_type": "обгон в неположенном месте",
+        "doc_date": "30.05.2025"
+      },
+      "files": {
+        "txt": "txt/doc_033.txt",
+        "pdf": "pdf/doc_033.pdf",
+        "png": "png/doc_033.png"
+      }
+    },
+    {
+      "id": 34,
+      "filename": "doc_034",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 46833,
+        "debtor": "Комаров Мария Алексеевич",
+        "creditor": "ООО \"Рога и Копыта\"",
+        "doc_date": "23.06.2025",
+        "payment_date": "30.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_034.txt",
+        "pdf": "pdf/doc_034.pdf",
+        "png": "png/doc_034.png"
+      }
+    },
+    {
+      "id": 35,
+      "filename": "doc_035",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ПАО \"Промышленность\"",
+        "chairman": "Голубев Иван Сергеевич",
+        "secretary": "Зайцев Роман Сергеевич",
+        "participants_count": 6,
+        "doc_date": "16.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_035.txt",
+        "pdf": "pdf/doc_035.pdf",
+        "png": "png/doc_035.png"
+      }
+    },
+    {
+      "id": 36,
+      "filename": "doc_036",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 15000,
+        "violator": "Голубев Иван Петрович",
+        "article": "20.4",
+        "violation_type": "нарушение ПДД",
+        "doc_date": "18.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_036.txt",
+        "pdf": "pdf/doc_036.pdf",
+        "png": "png/doc_036.png"
+      }
+    },
+    {
+      "id": 37,
+      "filename": "doc_037",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 20000,
+        "violator": "Семенов Юлия Олегович",
+        "article": "20.4",
+        "violation_type": "превышение скорости",
+        "doc_date": "15.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_037.txt",
+        "pdf": "pdf/doc_037.pdf",
+        "png": "png/doc_037.png"
+      }
+    },
+    {
+      "id": 38,
+      "filename": "doc_038",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 100000,
+        "debtor": "Сидоров Павел Максимович",
+        "creditor": "ООО \"Торговый Дом\"",
+        "doc_date": "17.05.2025",
+        "payment_date": "27.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_038.txt",
+        "pdf": "pdf/doc_038.pdf",
+        "png": "png/doc_038.png"
+      }
+    },
+    {
+      "id": 39,
+      "filename": "doc_039",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 13630,
+        "violator": "Богданов Николай Станиславович",
+        "article": "15.25",
+        "violation_type": "проезд на красный свет",
+        "doc_date": "13.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_039.txt",
+        "pdf": "pdf/doc_039.pdf",
+        "png": "png/doc_039.png"
+      }
+    },
+    {
+      "id": 40,
+      "filename": "doc_040",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 20000,
+        "debtor": "Петров Петр Станиславович",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "09.05.2025",
+        "payment_date": "11.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_040.txt",
+        "pdf": "pdf/doc_040.pdf",
+        "png": "png/doc_040.png"
+      }
+    },
+    {
+      "id": 41,
+      "filename": "doc_041",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 214186,
+        "debtor": "Воробьев Михаил Романович",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "11.06.2025",
+        "payment_date": "29.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_041.txt",
+        "pdf": "pdf/doc_041.pdf",
+        "png": "png/doc_041.png"
+      }
+    },
+    {
+      "id": 42,
+      "filename": "doc_042",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 30000,
+        "violator": "Соловьев Станислав Владимирович",
+        "article": "20.20",
+        "violation_type": "неправильная парковка",
+        "doc_date": "10.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_042.txt",
+        "pdf": "pdf/doc_042.pdf",
+        "png": "png/doc_042.png"
+      }
+    },
+    {
+      "id": 43,
+      "filename": "doc_043",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 27892,
+        "violator": "Беляев Елена Андреевич",
+        "article": "12.15",
+        "violation_type": "нарушение ПДД",
+        "doc_date": "22.05.2025"
+      },
+      "files": {
+        "txt": "txt/doc_043.txt",
+        "pdf": "pdf/doc_043.pdf",
+        "png": "png/doc_043.png"
+      }
+    },
+    {
+      "id": 44,
+      "filename": "doc_044",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 25000,
+        "violator": "Волков Павел Алексеевич",
+        "article": "19.5",
+        "violation_type": "неправильная парковка",
+        "doc_date": "21.05.2025"
+      },
+      "files": {
+        "txt": "txt/doc_044.txt",
+        "pdf": "pdf/doc_044.pdf",
+        "png": "png/doc_044.png"
+      }
+    },
+    {
+      "id": 45,
+      "filename": "doc_045",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ЗАО \"Финанс Групп\"",
+        "chairman": "Федоров Михаил Евгеньевич",
+        "secretary": "Комаров Татьяна Станиславович",
+        "participants_count": 3,
+        "doc_date": "12.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_045.txt",
+        "pdf": "pdf/doc_045.pdf",
+        "png": "png/doc_045.png"
+      }
+    },
+    {
+      "id": 46,
+      "filename": "doc_046",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ООО \"Строй Комплекс\"",
+        "chairman": "Морозов Мария Евгеньевич",
+        "secretary": "Тарасов Игорь Станиславович",
+        "participants_count": 7,
+        "doc_date": "11.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_046.txt",
+        "pdf": "pdf/doc_046.pdf",
+        "png": "png/doc_046.png"
+      }
+    },
+    {
+      "id": 47,
+      "filename": "doc_047",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ПАО \"Энерго Системы\"",
+        "chairman": "Тарасов Татьяна Александрович",
+        "secretary": "Семенов Станислав Романович",
+        "participants_count": 3,
+        "doc_date": "13.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_047.txt",
+        "pdf": "pdf/doc_047.pdf",
+        "png": "png/doc_047.png"
+      }
+    },
+    {
+      "id": 48,
+      "filename": "doc_048",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 36959,
+        "debtor": "Петров Ирина Николаевич",
+        "creditor": "ООО \"Бизнес Решения\"",
+        "doc_date": "25.04.2025",
+        "payment_date": "16.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_048.txt",
+        "pdf": "pdf/doc_048.pdf",
+        "png": "png/doc_048.png"
+      }
+    },
+    {
+      "id": 49,
+      "filename": "doc_049",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 5000,
+        "debtor": "Семенов Алексей Дмитриевич",
+        "creditor": "ООО \"Торговый Дом\"",
+        "doc_date": "11.07.2025",
+        "payment_date": "05.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_049.txt",
+        "pdf": "pdf/doc_049.pdf",
+        "png": "png/doc_049.png"
+      }
+    },
+    {
+      "id": 50,
+      "filename": "doc_050",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 5000,
+        "debtor": "Михайлов Максим Максимович",
+        "creditor": "ООО \"Рога и Копыта\"",
+        "doc_date": "26.04.2025",
+        "payment_date": "22.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_050.txt",
+        "pdf": "pdf/doc_050.pdf",
+        "png": "png/doc_050.png"
+      }
+    },
+    {
+      "id": 51,
+      "filename": "doc_051",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 1000,
+        "violator": "Федоров Дмитрий Романович",
+        "article": "20.4",
+        "violation_type": "нарушение разметки",
+        "doc_date": "01.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_051.txt",
+        "pdf": "pdf/doc_051.pdf",
+        "png": "png/doc_051.png"
+      }
+    },
+    {
+      "id": 52,
+      "filename": "doc_052",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 5000,
+        "violator": "Михайлов Петр Александрович",
+        "article": "12.9",
+        "violation_type": "несоблюдение дистанции",
+        "doc_date": "06.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_052.txt",
+        "pdf": "pdf/doc_052.pdf",
+        "png": "png/doc_052.png"
+      }
+    },
+    {
+      "id": 53,
+      "filename": "doc_053",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 75000,
+        "debtor": "Сидоров Наталья Иванович",
+        "creditor": "ООО \"Металл Сервис\"",
+        "doc_date": "13.07.2025",
+        "payment_date": "04.08.2025"
+      },
+      "files": {
+        "txt": "txt/doc_053.txt",
+        "pdf": "pdf/doc_053.pdf",
+        "png": "png/doc_053.png"
+      }
+    },
+    {
+      "id": 54,
+      "filename": "doc_054",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ПАО \"Промышленность\"",
+        "chairman": "Морозов Наталья Романович",
+        "secretary": "Богданов Елена Павлович",
+        "participants_count": 5,
+        "doc_date": "13.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_054.txt",
+        "pdf": "pdf/doc_054.pdf",
+        "png": "png/doc_054.png"
+      }
+    },
+    {
+      "id": 55,
+      "filename": "doc_055",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 5000,
+        "debtor": "Павлов Андрей Евгеньевич",
+        "creditor": "ПАО \"Промышленность\"",
+        "doc_date": "02.05.2025",
+        "payment_date": "21.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_055.txt",
+        "pdf": "pdf/doc_055.pdf",
+        "png": "png/doc_055.png"
+      }
+    },
+    {
+      "id": 56,
+      "filename": "doc_056",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ЗАО \"Финанс Групп\"",
+        "chairman": "Петров Александр Олегович",
+        "secretary": "Михайлов Евгений Иванович",
+        "participants_count": 7,
+        "doc_date": "13.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_056.txt",
+        "pdf": "pdf/doc_056.pdf",
+        "png": "png/doc_056.png"
+      }
+    },
+    {
+      "id": 57,
+      "filename": "doc_057",
+      "document_type": "protocol",
+      "metadata": {
+        "organization": "ПАО \"Промышленность\"",
+        "chairman": "Новиков Елена Максимович",
+        "secretary": "Павлов Юлия Алексеевич",
+        "participants_count": 3,
+        "doc_date": "29.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_057.txt",
+        "pdf": "pdf/doc_057.pdf",
+        "png": "png/doc_057.png"
+      }
+    },
+    {
+      "id": 58,
+      "filename": "doc_058",
+      "document_type": "bill_of_exchange",
+      "metadata": {
+        "amount": 85132,
+        "debtor": "Воробьев Евгений Станиславович",
+        "creditor": "ЗАО \"Финанс Групп\"",
+        "doc_date": "02.07.2025",
+        "payment_date": "22.07.2025"
+      },
+      "files": {
+        "txt": "txt/doc_058.txt",
+        "pdf": "pdf/doc_058.pdf",
+        "png": "png/doc_058.png"
+      }
+    },
+    {
+      "id": 59,
+      "filename": "doc_059",
+      "document_type": "fine_notice",
+      "metadata": {
+        "fine_amount": 30000,
+        "violator": "Семенов Татьяна Максимович",
+        "article": "12.16",
+        "violation_type": "нарушение режима труда",
+        "doc_date": "10.06.2025"
+      },
+      "files": {
+        "txt": "txt/doc_059.txt",
+        "pdf": "pdf/doc_059.pdf",
+        "png": "png/doc_059.png"
+      }
+    }
+  ]
+}

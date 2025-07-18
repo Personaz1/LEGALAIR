@@ -1,0 +1,217 @@
+name: Legal ASI CI/CD
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PYTHON_VERSION: "3.11"
+  NODE_VERSION: "18"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Code Quality
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install black isort flake8
+          pip install -r requirements.txt
+      
+      - name: Run Black
+        run: black --check api/ ml/
+      
+      - name: Run isort
+        run: isort --check-only api/ ml/
+      
+      - name: Run flake8
+        run: flake8 api/ ml/ --max-line-length=88 --extend-ignore=E203,W503
+
+  test-api:
+    runs-on: ubuntu-latest
+    name: API Tests
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: legal_pass
+          POSTGRES_USER: legal_user
+          POSTGRES_DB: legal_ai
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+      
+      redis:
+        image: redis:7-alpine
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 6379:6379
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgomp1 libglib2.0-0 libsm6 libxext6 libxrender-dev libgl1-mesa-glx
+      
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Run API tests
+        env:
+          DATABASE_URL: postgresql://legal_user:legal_pass@localhost:5432/legal_ai
+          REDIS_URL: redis://localhost:6379
+          TESTING: true
+        run: |
+          pytest tests/ -v --tb=short --cov=api --cov=ml
+
+  docker-build:
+    runs-on: ubuntu-latest
+    name: Docker Build Test
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build API image
+        run: |
+          docker build -f Dockerfile.api -t legal-ai-api:test .
+      
+      - name: Test Docker Compose
+        run: |
+          cp docker-compose.yml docker-compose.test.yml
+          # Use test database credentials
+          sed -i 's/legal_pass/test_pass/g' docker-compose.test.yml
+          docker-compose -f docker-compose.test.yml config
+
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'fs'
+          scan-ref: '.'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+      
+      - name: Upload Trivy scan results
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  frontend-test:
+    runs-on: ubuntu-latest
+    name: Frontend Tests
+    defaults:
+      run:
+        working-directory: ./web
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: './web/package-lock.json'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run lint
+        run: npm run lint
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Build
+        run: npm run build
+
+  integration-test:
+    runs-on: ubuntu-latest
+    name: Integration Tests
+    needs: [test-api, docker-build]
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Start services
+        run: |
+          docker-compose up -d --build
+          sleep 30  # Wait for services to start
+      
+      - name: Health check
+        run: |
+          curl -f http://localhost:8000/health || exit 1
+          curl -f http://localhost:8000/api/v1/ocr/health || exit 1
+      
+      - name: Run integration tests
+        run: |
+          docker-compose exec -T api pytest tests/integration/ -v
+      
+      - name: Cleanup
+        if: always()
+        run: docker-compose down -v
+
+  deploy-staging:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    name: Deploy to Staging
+    needs: [lint, test-api, frontend-test, integration-test]
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to staging
+        run: |
+          echo "Deploying to staging environment..."
+          # Staging deployment commands will be added here
+      
+      - name: Notify team
+        uses: 8398a7/action-slack@v3
+        with:
+          status: ${{ job.status }}
+          channel: '#legal-ai-dev'
+          webhook_url: ${{ secrets.SLACK_WEBHOOK }}
+        if: always()
+
+  deploy-production:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+    needs: [lint, test-api, frontend-test, integration-test]
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to production
+        run: |
+          echo "Production deployment ready for GPU phase..."
+          # Production deployment commands for RunPod will be added here 

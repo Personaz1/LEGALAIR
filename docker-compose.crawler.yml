@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  crawler:
+    build:
+      context: .
+      dockerfile: Dockerfile.crawler
+    container_name: legal-ai-crawler
+    environment:
+      - PYTHONPATH=/app
+      - SCRAPY_SETTINGS_MODULE=crawlers.settings
+      - LOG_LEVEL=INFO
+      # OCR integration
+      - LEGAL_CRAWL_OCR_ENABLED=false
+      - LEGAL_CRAWL_PRIVACY_MASKING=true
+      # API metrics endpoint (if available)
+      - API_BASE_URL=http://api:8000
+    volumes:
+      # Data persistence
+      - ./data/crawl:/app/data/crawl
+      - ./logs:/app/logs
+      - ./data/ocr_txt:/app/data/ocr_txt
+      # Configuration
+      - ./configs:/app/configs:ro
+    networks:
+      - legal-ai-network
+    depends_on:
+      - redis
+    restart: unless-stopped
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          memory: 2G
+          cpus: '1.0'
+        reservations:
+          memory: 512M
+          cpus: '0.25'
+
+  # Scheduled crawler service
+  crawler-scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile.crawler
+    container_name: legal-ai-crawler-scheduler
+    environment:
+      - PYTHONPATH=/app
+      - CRON_SCHEDULE=0 6 * * *  # 06:00 MSK daily
+    volumes:
+      - ./data/crawl:/app/data/crawl
+      - ./logs:/app/logs
+      - ./scripts/cron_crawler.sh:/app/cron_crawler.sh:ro
+    networks:
+      - legal-ai-network
+    depends_on:
+      - crawler
+    restart: unless-stopped
+    command: |
+      sh -c '
+        echo "$$CRON_SCHEDULE /app/cron_crawler.sh" | crontab -
+        crond -f
+      '
+
+  # Redis for caching and deduplication
+  redis:
+    image: redis:7-alpine
+    container_name: legal-ai-redis-crawler
+    volumes:
+      - redis_data:/data
+    networks:
+      - legal-ai-network
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+
+  # Monitoring service
+  crawler-monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile.crawler
+    container_name: legal-ai-crawler-monitor
+    environment:
+      - PYTHONPATH=/app
+      - MONITORING_PORT=8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data/crawl:/app/data/crawl:ro
+      - ./logs:/app/logs:ro
+    networks:
+      - legal-ai-network
+    restart: unless-stopped
+    command: python scripts/crawler_monitor.py
+
+volumes:
+  redis_data:
+
+networks:
+  legal-ai-network:
+    external: true 

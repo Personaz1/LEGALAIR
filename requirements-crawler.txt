@@ -1,0 +1,63 @@
+# Legal AI Crawler Dependencies
+# ΔΣ::Cursor - Document Collection
+
+# Core Scrapy framework
+scrapy>=2.11.0
+twisted>=22.10.0
+
+# HTML parsing
+lxml>=4.9.0
+beautifulsoup4>=4.12.0
+
+# HTTP handling
+requests>=2.31.0
+urllib3>=1.26.0
+
+# PDF text extraction
+PyPDF2>=3.0.0
+pdfplumber>=0.9.0
+
+# Browser automation (for kad.arbitr.ru)
+playwright>=1.40.0
+selenium>=4.15.0
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Date/time handling
+python-dateutil>=2.8.0
+
+# Logging and monitoring
+loguru>=0.7.0
+
+# File handling
+pathlib2>=2.3.0
+
+# Configuration
+python-dotenv>=1.0.0
+pyyaml>=6.0
+
+# Data validation
+jsonschema>=4.19.0
+
+# Async support
+aiofiles>=23.0.0
+asyncio>=3.4.3
+
+# Text processing
+regex>=2023.10.0
+nltk>=3.8.0
+
+# Image processing (for OCR integration)
+Pillow>=10.0.0
+
+# Development and testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-mock>=3.11.0
+
+# Code quality
+black>=23.0.0
+isort>=5.12.0
+flake8>=6.0.0 

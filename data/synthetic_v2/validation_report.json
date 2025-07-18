@@ -1,0 +1,219 @@
+{
+  "validation_timestamp": "2025-07-18T20:31:09.334380",
+  "dataset_info": {
+    "total_documents": 60,
+    "document_types": {
+      "protocol": 15,
+      "bill_of_exchange": 24,
+      "fine_notice": 21
+    },
+    "version": "2.0"
+  },
+  "file_structure": {
+    "total_documents": 60,
+    "missing_files": [],
+    "file_types": {
+      "txt": 60,
+      "pdf": 60,
+      "png": 60
+    },
+    "file_sizes": {
+      "txt": {
+        "count": 60,
+        "avg_size": 988,
+        "min_size": 815,
+        "max_size": 1156
+      },
+      "pdf": {
+        "count": 60,
+        "avg_size": 2302,
+        "min_size": 2248,
+        "max_size": 2359
+      },
+      "png": {
+        "count": 60,
+        "avg_size": 13400,
+        "min_size": 9690,
+        "max_size": 22135
+      }
+    },
+    "structure_valid": true
+  },
+  "content_quality": {
+    "documents_processed": 60,
+    "parsing_success": 60,
+    "classification_accuracy": 60,
+    "field_extraction_success": 60,
+    "content_quality": {
+      "avg_length": 589,
+      "russian_ratio": 0.6709719356753243,
+      "completeness_scores": [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "avg_completeness": 1.0
+    },
+    "errors": [],
+    "parsing_success_rate": 1.0,
+    "classification_accuracy_rate": 1.0,
+    "field_extraction_success_rate": 1.0
+  },
+  "document_types": {
+    "type_distribution": {
+      "protocol": 15,
+      "bill_of_exchange": 24,
+      "fine_notice": 21
+    },
+    "type_quality": {
+      "protocol": {
+        "sample_size": 3,
+        "classification_accuracy": 3,
+        "field_extraction_quality": 3,
+        "content_examples": [
+          {
+            "filename": "doc_000",
+            "length": 573,
+            "first_line": "ПРОТОКОЛ заседания № 872 от 21.06.2025"
+          },
+          {
+            "filename": "doc_009",
+            "length": 584,
+            "first_line": "ПРОТОКОЛ заседания № 521 от 16.07.2025"
+          },
+          {
+            "filename": "doc_011",
+            "length": 641,
+            "first_line": "ПРОТОКОЛ заседания № 459 от 26.06.2025"
+          }
+        ],
+        "classification_accuracy_rate": 1.0,
+        "field_extraction_quality_rate": 1.0
+      },
+      "bill_of_exchange": {
+        "sample_size": 3,
+        "classification_accuracy": 3,
+        "field_extraction_quality": 3,
+        "content_examples": [
+          {
+            "filename": "doc_001",
+            "length": 553,
+            "first_line": "ВЕКСЕЛЬ № 191161 от 03.05.2025"
+          },
+          {
+            "filename": "doc_002",
+            "length": 514,
+            "first_line": "ВЕКСЕЛЬ № 585100 от 02.06.2025"
+          },
+          {
+            "filename": "doc_006",
+            "length": 531,
+            "first_line": "ВЕКСЕЛЬ № 772097 от 14.07.2025"
+          }
+        ],
+        "classification_accuracy_rate": 1.0,
+        "field_extraction_quality_rate": 1.0
+      },
+      "fine_notice": {
+        "sample_size": 3,
+        "classification_accuracy": 3,
+        "field_extraction_quality": 3,
+        "content_examples": [
+          {
+            "filename": "doc_003",
+            "length": 658,
+            "first_line": "ПОСТАНОВЛЕНИЕ об административном правонарушении"
+          },
+          {
+            "filename": "doc_004",
+            "length": 643,
+            "first_line": "ПОСТАНОВЛЕНИЕ об административном правонарушении"
+          },
+          {
+            "filename": "doc_005",
+            "length": 657,
+            "first_line": "ПОСТАНОВЛЕНИЕ об административном правонарушении"
+          }
+        ],
+        "classification_accuracy_rate": 1.0,
+        "field_extraction_quality_rate": 1.0
+      }
+    },
+    "expected_vs_actual": {
+      "expected": {
+        "protocol": 15,
+        "bill_of_exchange": 24,
+        "fine_notice": 21
+      },
+      "actual": {
+        "protocol": 15,
+        "bill_of_exchange": 24,
+        "fine_notice": 21
+      },
+      "matches": true
+    }
+  },
+  "overall_assessment": {
+    "score": 100.0,
+    "grade": "A",
+    "issues": 0,
+    "recommendation": "Excellent quality dataset, ready for production use"
+  }
+}

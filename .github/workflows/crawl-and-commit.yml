@@ -1,0 +1,275 @@
+name: Automated Legal Document Crawling
+
+on:
+  schedule:
+    # Run daily at 06:00 Moscow time (03:00 UTC)
+    - cron: '0 3 * * *'
+  
+  workflow_dispatch:
+    inputs:
+      spider:
+        description: 'Spider to run'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - pravo
+          - kad
+          - gibdd
+          - github
+      limit:
+        description: 'Number of documents to crawl'
+        required: false
+        default: '50'
+        type: string
+      since_days:
+        description: 'Only crawl documents from last N days'
+        required: false
+        default: '7'
+        type: string
+
+permissions:
+  contents: write
+  actions: read
+  security-events: write
+
+jobs:
+  crawl-documents:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    
+    strategy:
+      matrix:
+        spider: [pravo, kad, gibdd]
+      fail-fast: false
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+    
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y \
+          libxml2-dev libxslt1-dev \
+          libssl-dev libffi-dev \
+          libjpeg-dev libpng-dev
+    
+    - name: Install Python dependencies
+      run: |
+        pip install --upgrade pip
+        pip install -r requirements-crawler.txt
+        pip install -r requirements.txt
+    
+    - name: Install Playwright browsers
+      run: |
+        playwright install chromium firefox
+        playwright install-deps
+    
+    - name: Create data directories
+      run: |
+        mkdir -p data/crawl
+        mkdir -p logs
+        mkdir -p data/ocr_txt
+    
+    - name: Calculate since date
+      id: since_date
+      run: |
+        if [ "${{ github.event.inputs.since_days }}" != "" ]; then
+          DAYS=${{ github.event.inputs.since_days }}
+        else
+          DAYS=7
+        fi
+        SINCE_DATE=$(date -d "$DAYS days ago" +%Y-%m-%d)
+        echo "since_date=$SINCE_DATE" >> $GITHUB_OUTPUT
+        echo "Since date: $SINCE_DATE"
+    
+    - name: Run crawler
+      env:
+        PYTHONPATH: ${{ github.workspace }}
+        SCRAPY_SETTINGS_MODULE: crawlers.settings
+      run: |
+        SPIDER="${{ github.event.inputs.spider || matrix.spider }}"
+        LIMIT="${{ github.event.inputs.limit || '50' }}"
+        SINCE="${{ steps.since_date.outputs.since_date }}"
+        
+        echo "🕷️ Running crawler: $SPIDER"
+        echo "📊 Limit: $LIMIT documents"
+        echo "📅 Since: $SINCE"
+        
+        python scripts/crawl_docs.py $SPIDER \
+          --limit $LIMIT \
+          --since $SINCE \
+          --output-dir data/crawl \
+          --log-level INFO \
+          --delay 3 \
+          --concurrent 1
+    
+    - name: Extract text from PDFs
+      if: success()
+      run: |
+        echo "📄 Extracting text from downloaded PDFs..."
+        python scripts/extract_text_from_pdf.py \
+          data/crawl \
+          --output-dir data/ocr_txt \
+          --recursive \
+          --log-level INFO
+    
+    - name: Generate crawl summary
+      id: summary
+      run: |
+        SPIDER="${{ github.event.inputs.spider || matrix.spider }}"
+        
+        # Count files
+        PDF_COUNT=$(find data/crawl -name "*.pdf" | wc -l)
+        TXT_COUNT=$(find data/ocr_txt -name "*.txt" | wc -l)
+        META_COUNT=$(find data/crawl -name "*.meta.json" | wc -l)
+        
+        # Calculate total size
+        TOTAL_SIZE=$(du -sh data/crawl | cut -f1)
+        
+        echo "pdf_count=$PDF_COUNT" >> $GITHUB_OUTPUT
+        echo "txt_count=$TXT_COUNT" >> $GITHUB_OUTPUT
+        echo "meta_count=$META_COUNT" >> $GITHUB_OUTPUT
+        echo "total_size=$TOTAL_SIZE" >> $GITHUB_OUTPUT
+        
+        # Create summary
+        cat << EOF > crawl_summary_${SPIDER}.md
+        ## Crawl Summary - $SPIDER Spider
+        
+        **Date**: $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        **Spider**: $SPIDER
+        **Limit**: ${{ github.event.inputs.limit || '50' }}
+        **Since**: ${{ steps.since_date.outputs.since_date }}
+        
+        ### Results
+        - 📄 PDF documents: $PDF_COUNT
+        - 📝 Extracted texts: $TXT_COUNT  
+        - 📋 Metadata files: $META_COUNT
+        - 💾 Total size: $TOTAL_SIZE
+        
+        ### Files
+        $(find data/crawl -name "*.pdf" | head -10 | sed 's/^/- /')
+        $([ $PDF_COUNT -gt 10 ] && echo "- ... and $(($PDF_COUNT - 10)) more files")
+        EOF
+    
+    - name: Security scan on downloaded files
+      run: |
+        echo "🔍 Running security scan on downloaded files..."
+        
+        # Check for suspicious file patterns
+        find data/crawl -type f -name "*.pdf" | while read file; do
+          # Check file size (reject files > 100MB)
+          size=$(stat -c%s "$file")
+          if [ $size -gt 104857600 ]; then
+            echo "❌ Suspicious large file: $file ($size bytes)"
+            rm "$file"
+          fi
+          
+          # Basic file type validation
+          if ! file "$file" | grep -q "PDF"; then
+            echo "❌ Invalid PDF file: $file"
+            rm "$file"
+          fi
+        done
+    
+    - name: Commit and push changes
+      if: success() && steps.summary.outputs.pdf_count > 0
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        # Add files
+        git add data/crawl/
+        git add data/ocr_txt/
+        git add crawl_summary_*.md
+        
+        # Check if there are changes
+        if git diff --staged --quiet; then
+          echo "No new documents to commit"
+          exit 0
+        fi
+        
+        # Commit with summary
+        SPIDER="${{ github.event.inputs.spider || matrix.spider }}"
+        git commit -m "🕷️ Crawled ${{ steps.summary.outputs.pdf_count }} documents ($SPIDER spider)
+
+        - PDF documents: ${{ steps.summary.outputs.pdf_count }}
+        - Text files: ${{ steps.summary.outputs.txt_count }}
+        - Metadata files: ${{ steps.summary.outputs.meta_count }}
+        - Total size: ${{ steps.summary.outputs.total_size }}
+        - Source: $SPIDER spider
+        - Date: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
+        
+        # Push changes
+        git push
+    
+    - name: Create issue on failure
+      if: failure()
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const spider = '${{ github.event.inputs.spider || matrix.spider }}';
+          const title = `Crawler failure: ${spider} spider`;
+          const body = `
+          ## Crawler Failure Report
+          
+          **Spider**: ${spider}
+          **Workflow**: ${{ github.workflow }}
+          **Run ID**: ${{ github.run_id }}
+          **Date**: ${new Date().toISOString()}
+          
+          ### Error Details
+          The automated crawler failed during execution. Please check the workflow logs for details.
+          
+          ### Next Steps
+          1. Review the workflow logs
+          2. Check if the target websites have changed structure
+          3. Update spider logic if necessary
+          4. Re-run the workflow manually
+          
+          **Logs**: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          `;
+          
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: title,
+            body: body,
+            labels: ['bug', 'crawler', 'automation']
+          });
+
+  notify-completion:
+    needs: crawl-documents
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+    - name: Calculate total results
+      id: total
+      run: |
+        # This would aggregate results from all matrix jobs
+        echo "Crawling workflow completed"
+        echo "total_success=true" >> $GITHUB_OUTPUT
+    
+    - name: Update API metrics (if available)
+      if: success()
+      run: |
+        # Update crawler metrics in API
+        curl -X POST "${{ secrets.API_ENDPOINT }}/metrics/crawler" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer ${{ secrets.API_TOKEN }}" \
+          -d '{
+            "timestamp": "'$(date -u +"%Y-%m-%dT%H:%M:%SZ")'",
+            "status": "completed",
+            "workflow_id": "${{ github.run_id }}"
+          }' || echo "API metrics update failed (optional)" 

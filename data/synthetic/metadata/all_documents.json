@@ -1,0 +1,407 @@
+[
+  {
+    "document_id": "bill_001",
+    "document_type": "bill_of_exchange",
+    "generated_at": "2025-07-18T19:14:57.578453",
+    "entities": {
+      "PERSON": [
+        "Сидоров Сидор Сидорович"
+      ],
+      "ORGANIZATION": [
+        "ЗАО \"Спектр\""
+      ],
+      "DATE": [
+        "30.09.2023",
+        "26.02.2024"
+      ],
+      "MONEY": [
+        "117 970 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "622092"
+      ],
+      "LOCATION": [
+        "г. Екатеринбург"
+      ]
+    },
+    "text_path": "data/synthetic/bills/bill_001.txt",
+    "image_path": "data/synthetic/images/bill_001.png"
+  },
+  {
+    "document_id": "bill_002",
+    "document_type": "bill_of_exchange",
+    "generated_at": "2025-07-18T19:14:57.677688",
+    "entities": {
+      "PERSON": [
+        "Новиков Алексей Сергеевич"
+      ],
+      "ORGANIZATION": [
+        "ЗАО \"Спектр\""
+      ],
+      "DATE": [
+        "26.01.2024",
+        "12.04.2024"
+      ],
+      "MONEY": [
+        "85 436 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "462236"
+      ],
+      "LOCATION": [
+        "г. Екатеринбург"
+      ]
+    },
+    "text_path": "data/synthetic/bills/bill_002.txt",
+    "image_path": "data/synthetic/images/bill_002.png"
+  },
+  {
+    "document_id": "bill_003",
+    "document_type": "bill_of_exchange",
+    "generated_at": "2025-07-18T19:14:57.747676",
+    "entities": {
+      "PERSON": [
+        "Федорова Елена Викторовна"
+      ],
+      "ORGANIZATION": [
+        "ООО \"Технологии будущего\""
+      ],
+      "DATE": [
+        "25.11.2024",
+        "27.09.2024"
+      ],
+      "MONEY": [
+        "51 753 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "999187"
+      ],
+      "LOCATION": [
+        "г. Санкт-Петербург"
+      ]
+    },
+    "text_path": "data/synthetic/bills/bill_003.txt",
+    "image_path": "data/synthetic/images/bill_003.png"
+  },
+  {
+    "document_id": "bill_004",
+    "document_type": "bill_of_exchange",
+    "generated_at": "2025-07-18T19:14:57.820260",
+    "entities": {
+      "PERSON": [
+        "Сидоров Сидор Сидорович"
+      ],
+      "ORGANIZATION": [
+        "ЗАО \"Спектр\""
+      ],
+      "DATE": [
+        "25.07.2024",
+        "20.07.2024"
+      ],
+      "MONEY": [
+        "22 203 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "916563"
+      ],
+      "LOCATION": [
+        "г. Москва"
+      ]
+    },
+    "text_path": "data/synthetic/bills/bill_004.txt",
+    "image_path": "data/synthetic/images/bill_004.png"
+  },
+  {
+    "document_id": "bill_005",
+    "document_type": "bill_of_exchange",
+    "generated_at": "2025-07-18T19:14:57.899054",
+    "entities": {
+      "PERSON": [
+        "Петров Петр Петрович"
+      ],
+      "ORGANIZATION": [
+        "ООО \"Рога и Копыта\""
+      ],
+      "DATE": [
+        "07.01.2025",
+        "20.12.2024"
+      ],
+      "MONEY": [
+        "432 888 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "481271"
+      ],
+      "LOCATION": [
+        "г. Казань"
+      ]
+    },
+    "text_path": "data/synthetic/bills/bill_005.txt",
+    "image_path": "data/synthetic/images/bill_005.png"
+  },
+  {
+    "document_id": "fine_001",
+    "document_type": "fine_notice",
+    "generated_at": "2025-07-18T19:14:57.973830",
+    "entities": {
+      "PERSON": [
+        "Новиков Алексей Сергеевич",
+        "Иванов Иван Иванович"
+      ],
+      "DATE": [
+        "13.07.2025"
+      ],
+      "MONEY": [
+        "32 800 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "148841"
+      ],
+      "LOCATION": [
+        "г. Новосибирск"
+      ],
+      "LEGAL_BASIS": [
+        "статья 12.9 КоАП РФ"
+      ]
+    },
+    "text_path": "data/synthetic/fines/fine_001.txt",
+    "image_path": "data/synthetic/images/fine_001.png"
+  },
+  {
+    "document_id": "fine_002",
+    "document_type": "fine_notice",
+    "generated_at": "2025-07-18T19:14:58.058889",
+    "entities": {
+      "PERSON": [
+        "Петров Петр Петрович",
+        "Новиков Алексей Сергеевич"
+      ],
+      "DATE": [
+        "20.05.2024"
+      ],
+      "MONEY": [
+        "9 376 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "554820"
+      ],
+      "LOCATION": [
+        "г. Казань"
+      ],
+      "LEGAL_BASIS": [
+        "статья 12.16 КоАП РФ"
+      ]
+    },
+    "text_path": "data/synthetic/fines/fine_002.txt",
+    "image_path": "data/synthetic/images/fine_002.png"
+  },
+  {
+    "document_id": "fine_003",
+    "document_type": "fine_notice",
+    "generated_at": "2025-07-18T19:14:58.138886",
+    "entities": {
+      "PERSON": [
+        "Новиков Алексей Сергеевич",
+        "Иванов Иван Иванович"
+      ],
+      "DATE": [
+        "08.02.2024"
+      ],
+      "MONEY": [
+        "492 159 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "287222"
+      ],
+      "LOCATION": [
+        "г. Казань"
+      ],
+      "LEGAL_BASIS": [
+        "статья 12.19 КоАП РФ"
+      ]
+    },
+    "text_path": "data/synthetic/fines/fine_003.txt",
+    "image_path": "data/synthetic/images/fine_003.png"
+  },
+  {
+    "document_id": "fine_004",
+    "document_type": "fine_notice",
+    "generated_at": "2025-07-18T19:14:58.226161",
+    "entities": {
+      "PERSON": [
+        "Петров Петр Петрович",
+        "Сидоров Сидор Сидорович"
+      ],
+      "DATE": [
+        "29.12.2023"
+      ],
+      "MONEY": [
+        "280 960 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "999702"
+      ],
+      "LOCATION": [
+        "г. Челябинск"
+      ],
+      "LEGAL_BASIS": [
+        "статья 12.9 КоАП РФ"
+      ]
+    },
+    "text_path": "data/synthetic/fines/fine_004.txt",
+    "image_path": "data/synthetic/images/fine_004.png"
+  },
+  {
+    "document_id": "fine_005",
+    "document_type": "fine_notice",
+    "generated_at": "2025-07-18T19:14:58.306756",
+    "entities": {
+      "PERSON": [
+        "Сидоров Сидор Сидорович",
+        "Морозов Дмитрий Александрович"
+      ],
+      "DATE": [
+        "07.05.2025"
+      ],
+      "MONEY": [
+        "137 539 рублей"
+      ],
+      "DOCUMENT_NUMBER": [
+        "937754"
+      ],
+      "LOCATION": [
+        "г. Казань"
+      ],
+      "LEGAL_BASIS": [
+        "статья 12.9 КоАП РФ"
+      ]
+    },
+    "text_path": "data/synthetic/fines/fine_005.txt",
+    "image_path": "data/synthetic/images/fine_005.png"
+  },
+  {
+    "document_id": "protocol_001",
+    "document_type": "protocol",
+    "generated_at": "2025-07-18T19:14:58.388165",
+    "entities": {
+      "PERSON": [
+        "Смирнова Анна Ивановна",
+        "Козлова Мария Петровна"
+      ],
+      "ORGANIZATION": [
+        "ЗАО \"Финанс Групп\""
+      ],
+      "DATE": [
+        "02.06.2024"
+      ],
+      "DOCUMENT_NUMBER": [
+        "868988"
+      ],
+      "LOCATION": [
+        "г. Челябинск"
+      ]
+    },
+    "text_path": "data/synthetic/protocols/protocol_001.txt",
+    "image_path": "data/synthetic/images/protocol_001.png"
+  },
+  {
+    "document_id": "protocol_002",
+    "document_type": "protocol",
+    "generated_at": "2025-07-18T19:14:58.477251",
+    "entities": {
+      "PERSON": [
+        "Сидоров Сидор Сидорович",
+        "Сидоров Сидор Сидорович"
+      ],
+      "ORGANIZATION": [
+        "ЗАО \"Финанс Групп\""
+      ],
+      "DATE": [
+        "12.08.2024"
+      ],
+      "DOCUMENT_NUMBER": [
+        "213065"
+      ],
+      "LOCATION": [
+        "г. Казань"
+      ]
+    },
+    "text_path": "data/synthetic/protocols/protocol_002.txt",
+    "image_path": "data/synthetic/images/protocol_002.png"
+  },
+  {
+    "document_id": "protocol_003",
+    "document_type": "protocol",
+    "generated_at": "2025-07-18T19:14:58.607281",
+    "entities": {
+      "PERSON": [
+        "Морозов Дмитрий Александрович",
+        "Новиков Алексей Сергеевич"
+      ],
+      "ORGANIZATION": [
+        "ИП Иванов И.И."
+      ],
+      "DATE": [
+        "14.03.2024"
+      ],
+      "DOCUMENT_NUMBER": [
+        "209120"
+      ],
+      "LOCATION": [
+        "г. Новосибирск"
+      ]
+    },
+    "text_path": "data/synthetic/protocols/protocol_003.txt",
+    "image_path": "data/synthetic/images/protocol_003.png"
+  },
+  {
+    "document_id": "protocol_004",
+    "document_type": "protocol",
+    "generated_at": "2025-07-18T19:14:58.713158",
+    "entities": {
+      "PERSON": [
+        "Иванов Иван Иванович",
+        "Иванов Иван Иванович"
+      ],
+      "ORGANIZATION": [
+        "ООО \"Технологии будущего\""
+      ],
+      "DATE": [
+        "16.07.2025"
+      ],
+      "DOCUMENT_NUMBER": [
+        "144152"
+      ],
+      "LOCATION": [
+        "г. Челябинск"
+      ]
+    },
+    "text_path": "data/synthetic/protocols/protocol_004.txt",
+    "image_path": "data/synthetic/images/protocol_004.png"
+  },
+  {
+    "document_id": "protocol_005",
+    "document_type": "protocol",
+    "generated_at": "2025-07-18T19:14:58.799662",
+    "entities": {
+      "PERSON": [
+        "Морозов Дмитрий Александрович",
+        "Новиков Алексей Сергеевич"
+      ],
+      "ORGANIZATION": [
+        "ИП Иванов И.И."
+      ],
+      "DATE": [
+        "28.10.2024"
+      ],
+      "DOCUMENT_NUMBER": [
+        "767800"
+      ],
+      "LOCATION": [
+        "г. Казань"
+      ]
+    },
+    "text_path": "data/synthetic/protocols/protocol_005.txt",
+    "image_path": "data/synthetic/images/protocol_005.png"
+  }
+]

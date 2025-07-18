@@ -1,0 +1,24 @@
+{
+  "total_chunks": 15,
+  "sample_size": 15,
+  "document_types": {
+    "federal_law": 4,
+    "administrative_code": 4,
+    "corporate_law": 3,
+    "judicial_practice": 4
+  },
+  "categories": {
+    "bills_exchange_law": 4,
+    "koap_chapters": 4,
+    "corporate_law": 3,
+    "judicial_practice": 4
+  },
+  "sources": {
+    "legislation.gov.ru": 4,
+    "consultant.ru": 7,
+    "vsrf.ru": 2,
+    "arbitr.ru": 2
+  },
+  "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
+  "created_at": "2025-07-18T21:38:43.062981"
+}

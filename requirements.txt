@@ -1,0 +1,39 @@
+# FastAPI Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Database & Storage
+sqlalchemy==2.0.23
+psycopg2-binary==2.9.9
+alembic==1.12.1
+minio==7.2.0
+redis==5.0.1
+
+# ML & OCR Dependencies (CPU)
+torch==2.1.1+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+transformers==4.35.2
+easyocr==1.7.0
+spacy==3.7.2
+numpy==1.24.4
+opencv-python==4.8.1.78
+Pillow==10.1.0
+scikit-learn==1.3.2
+
+# Russian Language Models
+ru_core_news_sm @ https://github.com/explosion/spacy-models/releases/download/ru_core_news_sm-3.7.0/ru_core_news_sm-3.7.0-py3-none-any.whl
+
+# Utilities
+pydantic==2.5.0
+python-dotenv==1.0.0
+aiofiles==23.2.1
+httpx==0.25.2
+pytest==7.4.3
+pytest-asyncio==0.21.1
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+
+# Monitoring & Logging
+structlog==23.2.0
+rich==13.7.0 
