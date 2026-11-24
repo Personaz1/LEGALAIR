@@ -1,0 +1,3 @@
+# Agent instructions
+
+Legal-document and retrieval software. Preserve source provenance, document version, jurisdiction and effective date. Treat OCR/RAG output as unverified until source passages are traceable. Minimize personal data, do not commit crawled private documents or production corpora, and use synthetic fixtures. Never present model output as legal advice or a definitive legal determination. Require qualified human review for consequential conclusions. Respect source terms and retention constraints.
