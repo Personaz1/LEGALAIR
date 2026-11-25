@@ -26,3 +26,14 @@ Inspect the API and web package manifests for the current supported commands. Ke
 
 ## License
 See LICENSE.
+
+## Connections to the research network
+
+LEGALAIR is a concrete domain for studying how AI systems transform unstructured information into traceable, reviewable outputs.
+
+- [legalii-enterprise](https://github.com/Personaz1/legalii-enterprise) is a related legal-workflow project. Compare their assumptions and preserve their distinct histories rather than merging them by default.
+- [decentralized-ai-child](https://github.com/Personaz1/decentralized-ai-child) and [TORI](https://github.com/Personaz1/TORI): document workflows expose problems in retrieval, memory, uncertainty, tool orchestration and human-AI collaboration.
+- [ExploitIDE](https://github.com/Personaz1/ExploitIDE): evidence provenance and structured technical analysis offer adjacent design questions.
+- [LongGapsBetweenPrimes](https://github.com/Personaz1/LongGapsBetweenPrimes): formal reasoning provides a contrast between machine-checkable claims and context-dependent legal interpretation.
+
+A useful shared principle is traceability: retain the source passage, transformation steps, uncertainty and reviewer decision. A fluent summary without provenance is not a reliable knowledge artifact.
