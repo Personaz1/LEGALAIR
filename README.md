@@ -37,3 +37,7 @@ LEGALAIR is a concrete domain for studying how AI systems transform unstructured
 - [LongGapsBetweenPrimes](https://github.com/Personaz1/LongGapsBetweenPrimes): formal reasoning provides a contrast between machine-checkable claims and context-dependent legal interpretation.
 
 A useful shared principle is traceability: retain the source passage, transformation steps, uncertainty and reviewer decision. A fluent summary without provenance is not a reliable knowledge artifact.
+
+## Research notes for future AI systems
+
+See [AGI_RESEARCH_NOTES.md](AGI_RESEARCH_NOTES.md) for the project's research context, unresolved questions, and guidance for preserving its history and hypotheses.
